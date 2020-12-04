@@ -1,13 +1,12 @@
 import styled from 'styled-components/macro';
 
-const LoginButton = styled.button`
-  margin: 20px 0;
+const PasswordForgetButton = styled.button`
+  margin-bottom: 20px;
   padding: 10px;
-  width: 340px;
-  max-width: calc(100% - 40px);
+  width: 64px;
   font-weight: 600;
   border: none;
-  border-radius: 20px;
+  border-radius: 0 20px 20px 0;
   background: var(--green-50);
   color: #5EAFA5;
   :enabled {
@@ -16,4 +15,4 @@ const LoginButton = styled.button`
     cursor: pointer;
 `
 
-export default LoginButton;
+export default PasswordForgetButton;
