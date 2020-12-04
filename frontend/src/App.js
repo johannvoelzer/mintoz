@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import LoginPage from './pages/login/LoginPage';
+import RegisterPage from './pages/register/RegisterPage';
+import EventsPage from './pages/events/EventsPage';
+import ComparePage from './pages/compare/ComparePage';
+import ExplorePage from './pages/explore/ExplorePage';
+import WatchlistPage from './pages/watchlist/WatchlistPage';
+import ProfilePage from './pages/profile/ProfilePage';
+import DetailsPage from './pages/details/DetailsPage';
+import * as ROUTES from './constants/Routes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <Switch>
+    <Route exact path={ROUTES.LOGIN}>
+      <LoginPage />
+    </Route>
+    <Route path={ROUTES.REGISTER}>
+      <RegisterPage />
+    </Route>
+    <Route path={ROUTES.EVENTS}>
+      <EventsPage />
+    </Route>
+    <Route path={ROUTES.COMPARE}>
+      <ComparePage />
+    </Route>
+    <Route path={ROUTES.EXPLORE}>
+      <ExplorePage />
+    </Route>
+    <Route path={ROUTES.WATCHLIST}>
+      <WatchlistPage />
+    </Route>
+    <Route path={ROUTES.PROFILE}>
+      <ProfilePage />
+    </Route>
+    <Route path={ROUTES.DETAILS}>
+      <DetailsPage />
+    </Route>
+  </Switch>
+);
 
 export default App;
