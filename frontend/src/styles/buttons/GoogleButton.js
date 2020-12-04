@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 const GoogleButton = styled.button`
 margin: 30px 30px 0;
-padding: 10px;
+padding: 12px;
 width: 186px;
 font-weight: 600;
 border: none;
