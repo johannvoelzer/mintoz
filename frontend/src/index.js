@@ -1,20 +1,21 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './GlobalStyles';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { AuthProvider } from "./components/Authentication";
 
 
 ReactDOM.render(
-  <Suspense fallback={<h3>Loading...</h3>}>
-    <React.StrictMode>
-      <Router>
-        <GlobalStyles />
-        <App />
-      </Router>
-    </React.StrictMode>
-  </Suspense>,
+  <AuthProvider>
+      <React.StrictMode>
+        <Router>
+          <GlobalStyles />
+          <App />
+        </Router>
+      </React.StrictMode>
+  </AuthProvider>,
   document.getElementById('root')
 );
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import firebaseConfig from '../firebaseConfig';
+
 import FormInput from '../styles/inputs/FormInput';
 import LoginButton from '../styles/buttons/LoginButton';
 
@@ -28,11 +29,10 @@ const RegisterForm = () => {
     };
     const isInvalid =
     currentUser.password !== currentUser.passwordTwo ||
-    currentUser.password.length < 6 ||
     currentUser.password === '' ||
     currentUser.email === '' ||
-    !currentUser.email.includes('.') ||
     currentUser.name === '';
+
     return (
         <div>
             <form onSubmit={handleSubmit}>

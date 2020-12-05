@@ -11,7 +11,7 @@ import * as ROUTES from './constants/Routes';
 
 const App = () => (
     <Switch>
-      <Route exact path={ROUTES.LOGIN}>
+      <Route path={ROUTES.LOGIN}>
         <LoginPage />
       </Route>
       <Route path={ROUTES.REGISTER}>
@@ -23,7 +23,7 @@ const App = () => (
       <Route path={ROUTES.COMPARE}>
         <ComparePage />
       </Route>
-      <Route path={ROUTES.EXPLORE}>
+      <Route exact path={ROUTES.EXPLORE}>
         <ExplorePage />
       </Route>
       <Route path={ROUTES.WATCHLIST}>
