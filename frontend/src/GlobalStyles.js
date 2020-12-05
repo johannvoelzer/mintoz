@@ -28,7 +28,7 @@ body {
 }
 
 h2 {
-    color: var(--white-25);
+    color: var(--white-50);
 }
 
 :root {

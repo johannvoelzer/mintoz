@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/Routes';
 import { AuthContext } from '../../components/Authentication';
+import Search from '../../components/Search';
 
 const ExplorePage = () => {
     const { currentUser } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const ExplorePage = () => {
     return (
         <div>
             <h2>Explore page</h2>
+            <Search />
             <Navigation />
         </div>
     );
