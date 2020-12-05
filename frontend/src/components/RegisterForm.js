@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import firebaseConfig from '../firebaseConfig';
-
 import FormInput from '../styles/inputs/FormInput';
 import LoginButton from '../styles/buttons/LoginButton';
 
@@ -32,7 +31,6 @@ const RegisterForm = () => {
     currentUser.password === '' ||
     currentUser.email === '' ||
     currentUser.name === '';
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
