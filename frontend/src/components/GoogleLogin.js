@@ -1,17 +1,13 @@
-import firebaseConfig from '../firebaseConfig';
+import firebase from 'firebase/app'; 
 import { Google } from './Icons';
 import GoogleButton from '../styles/buttons/GoogleButton';
 
 export default function GoogleLogin() {
-    const googleProvider = new firebaseConfig.auth().GoogleAuthProvider()
-    const signInWithGoogle = () => {
-        firebaseConfig.auth.signInWithPopup(googleProvider)
-        .then((res) => {
-            console.log(res.user)
-        }).catch((error) => {
-            console.log(error.message)
-        })
-    }
+    const provider = new firebase.auth.GoogleAuthProvider(); 
+    const signInWithGoogle = (event) => {
+        event.preventDefault();
+        firebase.auth().signInWithPopup(provider)
+    };
     return (
         <form>
           <Google style={{position: 'absolute', margin: '26px'}} />
