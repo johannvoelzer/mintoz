@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 const PasswordForgetButton = styled.button`
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 12px;
   width: 64px;
   font-weight: 600;
   border: none;

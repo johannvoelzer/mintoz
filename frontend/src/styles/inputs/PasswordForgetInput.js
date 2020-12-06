@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 const PasswordForgetInput = styled.input`
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 12px;
   width: 276px;
   max-width: calc(100% - 104px);
   border: none;

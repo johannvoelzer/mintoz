@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import * as ROUTES from '../../constants/Routes';
+import { AuthContext } from '../../components/Authentication';
 import EmailLogin from '../../components/EmailLogin';
 import PasswordForget from '../../components/PasswordForget';
 import GoogleLogin from '../../components/GoogleLogin';
@@ -8,9 +12,13 @@ import AuthenticationBox from '../../styles/boxes/AuthenticationBox';
 import Note from '../../styles/text/Note';
 
 function LoginPage() {
+    const { currentUser } = useContext(AuthContext);
+        if (currentUser) {
+            return <Redirect to={ROUTES.EXPLORE} />;
+        }
     return (
         <div>
-            <h2>LOGIN</h2>
+            <h2>MINTOZ</h2>
             <Logo>
             <Mintoz />
             </Logo>

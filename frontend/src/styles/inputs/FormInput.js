@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 const FormInput = styled.input`
 margin: 20px 0 0;
-padding: 10px;
+padding: 12px;
 width: 340px;
 max-width: calc(100% - 40px);
 border: none;

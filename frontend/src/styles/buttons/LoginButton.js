@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 const LoginButton = styled.button`
   margin: 20px 0;
-  padding: 10px;
+  padding: 12px;
   width: 340px;
   max-width: calc(100% - 40px);
   font-weight: 600;
