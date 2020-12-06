@@ -8,7 +8,7 @@ const GetName = (symbol) => {
     const [result, setResult] = useState([]);
 
     useEffect(() => {
-        axios.get(`${url}?function=OVERVIEW&symbol=IBM&apikey=${key}`)  
+        axios.get(`${url}?function=OVERVIEW&symbol=${symbol}&apikey=${key}`)  
             .then(({ data }) => {
             setResult(data)
         })
