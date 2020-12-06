@@ -18,7 +18,7 @@ function LoginPage() {
         }
     return (
         <div>
-            <h2>LOGIN</h2>
+            <h2>MINTOZ</h2>
             <Logo>
             <Mintoz />
             </Logo>

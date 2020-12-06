@@ -22,7 +22,7 @@ export default function Search() {
 
     const searchResults = results.map(result => (
         <li key={result['1. symbol']}>
-            <NavLink to={"/details/"+result['1. symbol']}>
+            <NavLink to={"/details/"+result['1. symbol']+"/"+result['2. name']}>
                 <p>{result['1. symbol']}</p>
                 <h3>{result['2. name']}</h3>
             </NavLink>

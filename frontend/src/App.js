@@ -1,3 +1,4 @@
+import { FirebaseDatabaseProvider } from "@react-firebase/database";
 import { Switch, Route } from 'react-router-dom';
 import LoginPage from './pages/login/LoginPage';
 import RegisterPage from './pages/register/RegisterPage';
@@ -10,6 +11,7 @@ import DetailsPage from './pages/details/DetailsPage';
 import * as ROUTES from './constants/Routes';
 
 const App = () => (
+  <FirebaseDatabaseProvider>
     <Switch>
       <Route path={ROUTES.LOGIN}>
         <LoginPage />
@@ -36,6 +38,7 @@ const App = () => (
         <DetailsPage />
       </Route>
     </Switch>
+  </FirebaseDatabaseProvider>
 );
 
 export default App;
