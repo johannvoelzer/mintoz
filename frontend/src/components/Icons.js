@@ -6,6 +6,8 @@ import { ReactComponent as ProfileIcon } from '../assets/ProfileIcon.svg';
 import { ReactComponent as BackIcon } from '../assets/BackIcon.svg';
 import { ReactComponent as Mintoz } from '../assets/Mintoz.svg';
 import { ReactComponent as Google } from '../assets/Google.svg';
+import { ReactComponent as AddBookmark } from '../assets/AddBookmark.svg';
+import { ReactComponent as RemoveBookmark } from '../assets/RemoveBookmark.svg';
 
 export {
   EventsIcon,
@@ -16,4 +18,6 @@ export {
   BackIcon,
   Mintoz,
   Google,
+  AddBookmark,
+  RemoveBookmark,
 }

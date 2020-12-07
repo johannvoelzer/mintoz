@@ -11,7 +11,7 @@ const ComparePage = () => {
         }
     return (
         <div>
-            <h2>Compare page</h2>
+            <h2>COMPARE</h2>
             <Navigation />
         </div>
     );

@@ -19,7 +19,7 @@ const DetailsPage = () => {
     }
     return (
         <div>
-            <div style={{margin: '20px'}}>
+            <div style={{margin: '30px'}}>
                 <DetailsHeader>
                     <BackButton />
                     <h2 style={{margin: '0'}}>{stockSymbol}</h2>
