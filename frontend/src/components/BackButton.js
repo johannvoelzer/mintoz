@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import * as ROUTES from '../constants/Routes';
+import { useHistory } from 'react-router-dom';
 import { BackIcon } from './Icons'; 
 
-const BackButton = () => (
-    <NavLink to={ROUTES.EXPLORE}>
+export default function BackButton() {
+    const history = useHistory();
+    return (
+    <div onClick={() => history.goBack()}>
         <BackIcon />
-    </NavLink>
-)
-
-export default BackButton;
+    </div>
+    )
+};

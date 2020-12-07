@@ -12,7 +12,7 @@ const ExplorePage = () => {
         }
     return (
         <div>
-            <h2>Explore page</h2>
+            <h2>EXPLORE</h2>
             <Search />
             <Navigation />
         </div>

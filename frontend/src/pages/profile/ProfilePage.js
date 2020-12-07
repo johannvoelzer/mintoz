@@ -13,8 +13,7 @@ const ProfilePage = () => {
         }
     return (
         <div>
-        <h1>Welcome</h1>
-        <p>This is the dashboard, if you can see this you're logged in.</p>
+        <h2>PROFILE</h2>
         <LogoutButton onClick={() => firebaseConfig.auth().signOut()}>LOGOUT</LogoutButton>
         <Navigation />
         </div>

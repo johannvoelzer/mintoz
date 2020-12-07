@@ -11,7 +11,7 @@ const EventsPage = () => {
         }
     return (
         <div>
-            <h2>Events page</h2>
+            <h2>EVENTS</h2>
             <Navigation />
         </div>
     );
