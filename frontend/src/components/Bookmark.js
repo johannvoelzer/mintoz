@@ -18,7 +18,7 @@ export default function Bookmark(props) {
     });
 
     function addStock() {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).push({
+        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,
         });
