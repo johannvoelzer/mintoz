@@ -15,11 +15,8 @@ export default function Watchlist() {
                 uid: key,
             }));
             setWatchlist(stockList);
-            console.log(stockList)
         });
     }, [currentUser.uid]);
-
-    console.log(watchlist)
 
     const watchlistOverview = watchlist.map(result => (
         <li key={JSON.stringify(result.symbol)}>

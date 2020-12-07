@@ -6,16 +6,16 @@ import { AddBookmark, RemoveBookmark } from './Icons';
 export default function Bookmark(props) {
     const { currentUser } = useContext(AuthContext);
 
-    const [state, setState] = useState(true);
+    const [state, setState] = useState(false);
 
     useEffect(() => {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).on('value', snapshot => {
             const stockObject = snapshot.val();
-            if (stockObject === null) {
-                setState(false)
+            if (stockObject !== null) {
+                setState(true)
             }
         })
-    });
+    }, [currentUser.uid, props.symbol]);
 
     function addStock() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
