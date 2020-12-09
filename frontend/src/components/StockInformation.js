@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import StockChart from './StockChart';
+import Fundamentals from './Fundamentals';
+import CompanyDetails from './CompanyDetails';
 
 const url = 'https://www.alphavantage.co/query'
 const key = process.env.ALPHA_VANTAGE_API_KEY
@@ -15,7 +18,11 @@ const StockInformation = ({symbol}) => {
     }, [symbol]);
 
     return (
-        <p>{result.Description}</p>
+        <div>
+            <StockChart symbol={symbol} />
+            <Fundamentals result={result}/>
+            <CompanyDetails result={result}/>
+        </div>
     )
 }
 

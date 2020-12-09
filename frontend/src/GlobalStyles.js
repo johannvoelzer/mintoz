@@ -30,6 +30,26 @@ body {
 h2 {
     color: var(--white-50);
 }
+h3 {
+    color: var(--white-main);
+}
+h4 {
+    margin: 0;
+    color: var(--white-75);
+}
+h5 {
+    margin: 2px 0;
+    color: var(--darkgrey-main);
+}
+p {
+    color: var(--white-75);
+}
+
+hr {
+    height: 2px;
+    border: none;
+    background-color: var(--darkgrey-25);
+}
 
 :root {
     --darkblue-main: #132F3E;
@@ -44,9 +64,10 @@ h2 {
 
     --grey-main: #8B9499;
 
-    --darkgrey-main: #414F56;
+    --darkgrey-main: #4D616D;
+    --darkgrey-25: rgb(77, 97, 109, 0.25);
 
-    --red-main: #E3436E;
+    --red-main: #F43467;
 
     --yellow-main: #E0A431;
 
@@ -56,8 +77,8 @@ h2 {
 
     --shadow-navigation: 0 -10px 20px #102835;
 
-    --lightshadow-darkblue: -10px -10px 20px rgb(27, 66, 87, 0.7);
-    --darkshadow-darkblue: 10px 10px 20px #0C1E29;
+    --lightshadow-darkblue: -6px -6px 12px #17384a;
+    --darkshadow-darkblue: 6px 6px 12px #0f2632;
     
     --lightshadow-white: -6px -6px 12px #FFFFFF;
     --darkshadow-white: 6px 6px 12px rgb(0, 0, 0, 0.08);
@@ -65,7 +86,10 @@ h2 {
     --lightshadow-grey: -6px -6px 12px #FFFFFF;
     --darkshadow-grey: 6px 6px 12px #545D64;
 
-    --lightshadow-button: -10px -10px 20px #1B4257;
-    --darkshadow-button: 10px 10px 20px #0B1C26;
+    --lightshadow-button: -6px -6px 12px #1B4257;
+    --darkshadow-button: 6px 6px 12px #0B1C26;
+
+    --lightshadow-chart: -6px -6px 12px #0B1C26;
+    --darkshadow-chart: 6px 6px 12px #1B4257;
 }
 `

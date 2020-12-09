@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from './Authentication';
 import firebaseConfig from "../firebaseConfig.js";
+import BookmarkButton from '../styles/buttons/BookmarkButton';
 import { AddBookmark, RemoveBookmark } from './Icons';
 
 export default function Bookmark(props) {
@@ -31,11 +32,11 @@ export default function Bookmark(props) {
     };
 
     return (
-        <div>
+        <BookmarkButton>
             {
-                state === false ? <AddBookmark onClick={addStock} style={{cursor: 'pointer'}} /> :
-                <RemoveBookmark onClick={removeStock} style={{cursor: 'pointer'}} />
+                state === false ? <AddBookmark onClick={addStock} /> :
+                <RemoveBookmark onClick={removeStock} />
             }
-        </div>
+        </BookmarkButton>
     )
 }

@@ -12,31 +12,29 @@ export default function Search() {
     function handleInputChange(event) {
         event.preventDefault();  
         setQuery(event.target.value)
-        if (query && query.length > 1) {
+        if (query) {
             axios.get(`${url}?function=SYMBOL_SEARCH&keywords=${query}&apikey=${key}`)  
                 .then(({ data }) => {
-                setResults(data.bestMatches)
+                setResults(data.bestMatches.map(result => (
+                    <li key={result['1. symbol']}>
+                        <NavLink to={"/details/"+result['1. symbol']+"/"+result['2. name']}>
+                            <p>{result['1. symbol']}</p>
+                            <h3>{result['2. name']}</h3>
+                        </NavLink>
+                    </li>
+                )))
             })
         }
     }
-
-    const searchResults = results.map(result => (
-        <li key={result['1. symbol']}>
-            <NavLink to={"/details/"+result['1. symbol']+"/"+result['2. name']}>
-                <p>{result['1. symbol']}</p>
-                <h3>{result['2. name']}</h3>
-            </NavLink>
-        </li>
-    ))
 
     return (
         <form>
             <input
                 value={query}
-                placeholder="Search for keyword"
+                placeholder="Enter keyword or symbol"
                 onChange={handleInputChange}
             />
-            <ul>{searchResults}</ul>
+            <ul>{results}</ul>
         </form>
     )
 }
