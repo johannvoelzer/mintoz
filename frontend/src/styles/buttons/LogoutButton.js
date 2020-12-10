@@ -3,7 +3,7 @@ import styled from'styled-components/macro';
 const LogoutButton = styled.button`
 margin: 10px;
 padding: 12px;
-width: 340px;
+width: 380px;
 max-width: calc(100% - 40px);
 font-weight: 600;
 cursor: pointer;
