@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
 
-const InformationBox = styled.div`
+const ListBox = styled.div`
     display: inline-block;
     vertical-align: top;
-    margin: 30px;
+    margin: 0 30px 30px;
     padding: 20px;
     width: 400px;
     text-align: left;
@@ -14,4 +14,4 @@ const InformationBox = styled.div`
         var(--darkshadow-darkblue);
 `
 
-export default InformationBox
+export default ListBox

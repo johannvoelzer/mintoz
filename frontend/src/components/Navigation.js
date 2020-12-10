@@ -1,8 +1,8 @@
-import { NavLink } from 'react-router-dom';
-import * as ROUTES from '../constants/Routes';
-import { EventsIcon, CompareIcon, Plus, WatchlistIcon, ProfileIcon } from './Icons';
-import NavigationBar from '../styles/navigation/NavigationBar';
-import ExploreButton from '../styles/buttons/ExploreButton';
+import { NavLink } from 'react-router-dom'
+import * as ROUTES from '../constants/Routes'
+import { EventsIcon, CompareIcon, Plus, WatchlistIcon, ProfileIcon } from './Icons'
+import NavigationBar from '../styles/navigation/NavigationBar'
+import ExploreButton from '../styles/buttons/ExploreButton'
 
 export default function Navigation() {
   return (
@@ -25,5 +25,5 @@ export default function Navigation() {
         <ProfileIcon />
       </NavLink>
     </NavigationBar>
-  );
-};
+  )
+}

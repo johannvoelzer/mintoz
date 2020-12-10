@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const GoogleButton = styled.button`
 margin: 18px 20px 0;
@@ -18,4 +18,4 @@ box-shadow:
   var(--darkshadow-darkblue);
 `
 
-export default GoogleButton;
+export default GoogleButton

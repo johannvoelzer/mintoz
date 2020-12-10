@@ -1,13 +1,13 @@
-import { useContext, useState, useEffect } from 'react';
-import { AuthContext } from './Authentication';
-import firebaseConfig from "../firebaseConfig.js";
-import BookmarkButton from '../styles/buttons/BookmarkButton';
-import { AddBookmark, RemoveBookmark } from './Icons';
+import { useContext, useState, useEffect } from 'react'
+import { AuthContext } from './Authentication'
+import firebaseConfig from "../firebaseConfig.js"
+import BookmarkButton from '../styles/buttons/BookmarkButton'
+import { AddBookmark, RemoveBookmark } from './Icons'
 
 export default function Bookmark(props) {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext)
 
-    const [state, setState] = useState(false);
+    const [state, setState] = useState(false)
 
     useEffect(() => {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).on('value', snapshot => {
@@ -16,20 +16,20 @@ export default function Bookmark(props) {
                 setState(true)
             }
         })
-    }, [currentUser.uid, props.symbol]);
+    }, [currentUser.uid, props.symbol])
 
     function addStock() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,
-        });
+        })
         setState(true)
     }
   
     function removeStock() {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).remove();
+        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).remove()
         setState(false)
-    };
+    }
 
     return (
         <BookmarkButton>

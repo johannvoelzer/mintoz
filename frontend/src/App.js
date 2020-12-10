@@ -1,13 +1,13 @@
-import { Switch, Route } from 'react-router-dom';
-import LoginPage from './pages/login/LoginPage';
-import RegisterPage from './pages/register/RegisterPage';
-import EventsPage from './pages/events/EventsPage';
-import ComparePage from './pages/compare/ComparePage';
-import ExplorePage from './pages/explore/ExplorePage';
-import WatchlistPage from './pages/watchlist/WatchlistPage';
-import ProfilePage from './pages/profile/ProfilePage';
-import DetailsPage from './pages/details/DetailsPage';
-import * as ROUTES from './constants/Routes';
+import { Switch, Route } from 'react-router-dom'
+import LoginPage from './pages/login/LoginPage'
+import RegisterPage from './pages/register/RegisterPage'
+import EventsPage from './pages/events/EventsPage'
+import ComparePage from './pages/compare/ComparePage'
+import ExplorePage from './pages/explore/ExplorePage'
+import WatchlistPage from './pages/watchlist/WatchlistPage'
+import ProfilePage from './pages/profile/ProfilePage'
+import DetailsPage from './pages/details/DetailsPage'
+import * as ROUTES from './constants/Routes'
 
 const App = () => (
     <Switch>
@@ -38,4 +38,4 @@ const App = () => (
     </Switch>
 );
 
-export default App;
+export default App

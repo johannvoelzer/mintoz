@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const PasswordForgetInput = styled.input`
   margin-bottom: 20px;
@@ -16,4 +16,4 @@ const PasswordForgetInput = styled.input`
     inset var(--darkshadow-grey);
 `
 
-export default PasswordForgetInput;
+export default PasswordForgetInput

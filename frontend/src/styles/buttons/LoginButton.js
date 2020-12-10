@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const LoginButton = styled.button`
   margin: 20px 0;
@@ -16,4 +16,4 @@ const LoginButton = styled.button`
     cursor: pointer;
 `
 
-export default LoginButton;
+export default LoginButton

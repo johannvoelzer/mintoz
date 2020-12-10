@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const ExploreButton = styled.div`
     display: flex;
@@ -18,4 +18,4 @@ const ExploreButton = styled.div`
     }
 `
 
-export default ExploreButton;
+export default ExploreButton

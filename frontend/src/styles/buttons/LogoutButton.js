@@ -1,4 +1,4 @@
-import styled from'styled-components/macro';
+import styled from'styled-components/macro'
 
 const LogoutButton = styled.button`
 margin: 10px;
@@ -16,4 +16,4 @@ box-shadow:
   var(--darkshadow-button)};
 `
 
-export default LogoutButton;
+export default LogoutButton

@@ -1,30 +1,33 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
-import ChartBox from '../styles/boxes/ChartBox';
-import Details from '../styles/text/Details';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Line } from 'react-chartjs-2'
+import ChartBoxTop from '../styles/boxes/ChartBoxTop'
+import Loader from '../components/Loader'
 
 const url = 'https://www.alphavantage.co/query'
 const key = process.env.ALPHA_VANTAGE_API_KEY
 
-export default function StockChart({ symbol }) {
-
-    const [chartData, setChartData] = useState([]);
+export default function GetDayChart({ symbol }) {
+    const [loading, setLoading] = useState(true)
+    const [dataSeries, setDataSeries] = useState([])
+    const [timeSeries, setTimeSeries] = useState([])
     const [dataColor, setDataColor] = useState('#EEEEEE')
-
+    
     useEffect(() => {
         axios.get(`${url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${key}`)  
-            .then(({ data }) => {
-            setChartData(data['Time Series (5min)'])
+        .then(response => {
+            if (response && response.data  && response.data['Time Series (5min)']) {
+                const data = response.data['Time Series (5min)']
+                setDataSeries(Object.keys(data).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['4. close'] * 100)/100
+                }))
+                setTimeSeries(Object.keys(data).reverse().map(timestamp => {
+                    return timestamp
+                }))
+                setLoading(false)
+            }
         })
-    }, [symbol]);
-
-    const dataSeries = Object.keys(chartData).reverse().map(timestamp => {
-        return Math.round(chartData[timestamp]['4. close'] * 100)/100
-    })
-    const timeSeries = Object.keys(chartData).reverse().map(timestamp => {
-        return timestamp
-    })
+    }, [symbol])
 
     useEffect(() => {
         if (dataSeries[0] >= dataSeries[99]) {
@@ -32,7 +35,7 @@ export default function StockChart({ symbol }) {
         } else {
             setDataColor('#00B49F')
         }
-    }, [dataSeries]);
+    }, [dataSeries])
 
     const options = {
         tooltips: {
@@ -66,12 +69,12 @@ export default function StockChart({ symbol }) {
                 ticks: {
                     callback(value) {
                     return '$' + value.toFixed(2);
-                    },
-                },
-                },
-            ],
-        },
-    };
+                    }
+                }
+                }
+            ]
+        }
+    }
     
     const data = {
       labels: timeSeries,
@@ -97,23 +100,22 @@ export default function StockChart({ symbol }) {
             data: dataSeries,
         }
       ]
-    };
+    }
 
+    if (loading) {
+        return (
+            <ChartBoxTop style={{height: '100px'}}>
+                <Loader />
+            </ChartBoxTop>
+        )
+    }
     return (
-        <ChartBox>
+        <ChartBoxTop>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${dataSeries[99]}</h4>
                 {dataSeries[0]>dataSeries[99] ? <h4 style={{margin: '10px 20px 25px', color: dataColor}}>- {Math.round((1-dataSeries[99]/dataSeries[0])*10000)/100}%</h4> : <h4 style={{margin: '10px 20px 25px', color: dataColor}}>+ {Math.round((1-dataSeries[99]/dataSeries[0])*(-10000))/100}%</h4>}
             </div>
             <Line useRefs="chart" data={data} options={options} />
-            <hr />
-            <Details style={{padding: '0 20px'}}>
-                <h5>DAY</h5>
-                <h5>WEEK</h5>
-                <h5>MONTH</h5>
-                <h5>YEAR</h5>
-                <h5>MAX</h5>
-            </Details>
-        </ChartBox>
-    );
+        </ChartBoxTop>
+    )
 }

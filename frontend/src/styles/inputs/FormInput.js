@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const FormInput = styled.input`
 margin: 20px 0 0;
@@ -16,4 +16,4 @@ box-shadow:
   inset var(--darkshadow-grey);
 `
 
-export default FormInput;
+export default FormInput

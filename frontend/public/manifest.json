@@ -1,9 +1,9 @@
 {
-  "short_name": "investoo",
-  "name": "investment decisions made easy",
+  "short_name": "mintoz",
+  "name": "mintoz - the easiest way to pick the right stocks for your portfolio",
   "icons": [
     {
-      "src": "mintoz512.png",
+      "src": "mintoz192.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },

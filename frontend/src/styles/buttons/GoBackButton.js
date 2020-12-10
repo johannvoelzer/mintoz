@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const GoBackButton = styled.div`
     cursor: pointer;
@@ -8,4 +8,4 @@ const GoBackButton = styled.div`
     }
 `
 
-export default GoBackButton;
+export default GoBackButton

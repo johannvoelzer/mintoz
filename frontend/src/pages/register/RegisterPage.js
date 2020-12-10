@@ -1,17 +1,17 @@
-import { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
-import * as ROUTES from '../../constants/Routes';
-import { AuthContext } from '../../components/Authentication';
-import RegisterForm from '../../components/RegisterForm';
-import LoginLink from '../../components/LoginLink';
-import Logo from '../../styles/images/Logo';
-import { Mintoz } from '../../components/Icons';
-import AuthenticationBox from '../../styles/boxes/AuthenticationBox';
+import { useContext } from 'react'
+import { Redirect } from 'react-router-dom'
+import * as ROUTES from '../../constants/Routes'
+import { AuthContext } from '../../components/Authentication'
+import RegisterForm from '../../components/RegisterForm'
+import LoginLink from '../../components/LoginLink'
+import Logo from '../../styles/images/Logo'
+import { Mintoz } from '../../components/Icons'
+import AuthenticationBox from '../../styles/boxes/AuthenticationBox'
 
 function RegisterPage() {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext)
         if (currentUser) {
-            return <Redirect to={ROUTES.EXPLORE} />;
+            return <Redirect to={ROUTES.EXPLORE} />
         }
     return(
         <div>
@@ -27,4 +27,4 @@ function RegisterPage() {
     )
 };
 
-export default RegisterPage;
+export default RegisterPage

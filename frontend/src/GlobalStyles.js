@@ -55,6 +55,7 @@ hr {
     --darkblue-main: #132F3E;
   
     --white-main: #EEEEEE;
+    --white-85: rgb(246, 246, 246, 0.85);
     --white-75: rgb(246, 246, 246, 0.75);
     --white-50: rgb(246, 246, 246, 0.5);
     --white-25: rgb(246, 246, 246, 0.25);
@@ -67,7 +68,7 @@ hr {
     --darkgrey-main: #4D616D;
     --darkgrey-25: rgb(77, 97, 109, 0.25);
 
-    --red-main: #F43467;
+    --red-main: #DD3B66;
 
     --yellow-main: #E0A431;
 
@@ -89,7 +90,7 @@ hr {
     --lightshadow-button: -6px -6px 12px #1B4257;
     --darkshadow-button: 6px 6px 12px #0B1C26;
 
-    --lightshadow-chart: -6px -6px 12px #0B1C26;
-    --darkshadow-chart: 6px 6px 12px #1B4257;
+    --lightshadow-chart: inset -6px -6px 12px white;
+    --darkshadow-chart: inset 6px 6px 12px #B7B7B7;
 }
 `

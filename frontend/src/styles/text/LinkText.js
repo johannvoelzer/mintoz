@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const LinkText = styled.p`
   margin: 0 10px 0;
@@ -11,4 +11,4 @@ const LinkText = styled.p`
   };
 `
 
-export default LinkText;
+export default LinkText
