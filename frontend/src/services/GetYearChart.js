@@ -5,16 +5,17 @@ import ChartBoxTop from '../styles/boxes/ChartBoxTop'
 import Loader from '../components/Loader'
 
 const url = 'https://www.alphavantage.co/query'
-const key = process.env.ALPHA_VANTAGE_API_KEY
+const key1 = process.env.ALPHA_VANTAGE_API_KEY_1
+const key2 = process.env.ALPHA_VANTAGE_API_KEY_2
 
-export default function GetYearChart({ symbol }) {
+export default function GetYearChart({ symbol, options }) {
     const [loading, setLoading] = useState(true)
     const [dataSeries, setDataSeries] = useState([])
     const [timeSeries, setTimeSeries] = useState([])
     const [dataColor, setDataColor] = useState('#EEEEEE')
     
     useEffect(() => {
-        axios.get(`${url}?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=${key}`)  
+        axios.get(`${url}?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=${key1}`)  
         .then(response => {
             if (response && response.data  && response.data['Weekly Time Series']) {
                 const data = response.data['Weekly Time Series']
@@ -26,6 +27,21 @@ export default function GetYearChart({ symbol }) {
                     return timestamp
                 }))
                 setLoading(false)
+            } else {
+                axios.get(`${url}?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=${key2}`)  
+                .then(response => {
+                    if (response && response.data  && response.data['Weekly Time Series']) {
+                        const data = response.data['Weekly Time Series']
+                        console.log(data)
+                        setDataSeries(Object.keys(data).slice(0, 54).reverse().map(timestamp => {
+                            return Math.round(data[timestamp]['4. close'] * 100)/100
+                        }))
+                        setTimeSeries(Object.keys(data).slice(0, 54).reverse().map(timestamp => {
+                            return timestamp
+                        }))
+                        setLoading(false)
+                    }
+                })
             }
         })
     }, [symbol])
@@ -37,45 +53,6 @@ export default function GetYearChart({ symbol }) {
             setDataColor('#00B49F')
         }
     }, [dataSeries])
-
-    const options = {
-        tooltips: {
-            mode: 'index',
-            intersect: false,
-            callbacks: {
-                label(tooltipItems) {
-                return `$${tooltipItems.yLabel}`;
-                },
-            },
-            displayColors: false,
-        },
-        hover: {
-            mode: 'index',
-            intersect: false,
-        },
-        maintainAspectRatio: true,
-        responsive: true,
-        legend: {
-            display: false,
-        },
-        scales: {
-            xAxes: [
-                {
-                display: false,
-                },
-            ],
-            yAxes: [
-                {
-                display: false,
-                ticks: {
-                    callback(value) {
-                    return '$' + value.toFixed(2);
-                    }
-                }
-                }
-            ]
-        }
-    }
     
     const data = {
       labels: timeSeries,

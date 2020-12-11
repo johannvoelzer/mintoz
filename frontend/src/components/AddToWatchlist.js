@@ -1,42 +1,36 @@
 import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from './Authentication'
-import firebaseConfig from "../firebaseConfig.js"
-import BookmarkButton from '../styles/buttons/BookmarkButton'
-import { AddBookmark, RemoveBookmark } from './Icons'
+import firebaseConfig from '../firebaseConfig.js'
+import ListButton from '../styles/buttons/ListButton'
+import { AddSmall, TickIcon } from './Icons'
 
-export default function Bookmark(props) {
+export default function BookmarkToggle(props) {
     const { currentUser } = useContext(AuthContext)
 
-    const [state, setState] = useState(false)
+    const [watchlist, setWatchlist] = useState(false)
 
     useEffect(() => {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).on('value', snapshot => {
             const stockObject = snapshot.val();
             if (stockObject !== null) {
-                setState(true)
+                setWatchlist(true)
             }
         })
     }, [currentUser.uid, props.symbol])
 
-    function addStock() {
+    function addToWatchlist() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,
         })
-        setState(true)
-    }
-  
-    function removeStock() {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).remove()
-        setState(false)
     }
 
     return (
-        <BookmarkButton>
+        <ListButton>
             {
-                state === false ? <AddBookmark onClick={addStock} /> :
-                <RemoveBookmark onClick={removeStock} />
+                watchlist === false ? <AddSmall onClick={addToWatchlist} /> :
+                <TickIcon />
             }
-        </BookmarkButton>
+        </ListButton>
     )
 }

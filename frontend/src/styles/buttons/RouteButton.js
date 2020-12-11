@@ -1,19 +1,19 @@
 import styled from'styled-components/macro'
 
-const LogoutButton = styled.button`
+const RouteButton = styled.button`
 margin: 10px;
 padding: 12px;
 width: 160px;
 max-width: calc(100% - 60px);
-font-weight: 600;
+font-weight: 900;
 cursor: pointer;
 border: none;
 border-radius: 20px;
-background: var(--red-main);
+background: var(--green-main);
 color: var(--white-main);
 box-shadow:
   var(--lightshadow-button),
   var(--darkshadow-button)};
 `
 
-export default LogoutButton
+export default RouteButton

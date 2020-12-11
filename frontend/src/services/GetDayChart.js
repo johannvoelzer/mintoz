@@ -1,9 +1,48 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import ChartBoxTop from '../styles/boxes/ChartBoxTop'
+import Loader from '../components/Loader'
 
-export default function GetDayChart({ dataSeries, timeSeries, options }) {
+const url = 'https://www.alphavantage.co/query'
+const key1 = process.env.ALPHA_VANTAGE_API_KEY_1
+const key2 = process.env.ALPHA_VANTAGE_API_KEY_2
+
+export default function GetDayChart({ symbol, options }) {
+    const [loading, setLoading] = useState(true)
+    const [dataSeries, setDataSeries] = useState([])
+    const [timeSeries, setTimeSeries] = useState([])
     const [dataColor, setDataColor] = useState('#EEEEEE')
+    
+    useEffect(() => {
+        axios.get(`${url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&apikey=${key1}`)  
+        .then(response => {
+            if (response && response.data  && response.data['Time Series (15min)']) {
+                const data = response.data['Time Series (15min)']
+                setDataSeries(Object.keys(data).slice(0, 64).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['4. close'] * 100)/100
+                }))
+                setTimeSeries(Object.keys(data).slice(0, 64).reverse().map(timestamp => {
+                    return timestamp
+                }))
+                setLoading(false)
+            } else {
+                axios.get(`${url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&apikey=${key2}`)  
+                .then(response => {
+                    if (response && response.data  && response.data['Time Series (15min)']) {
+                        const data = response.data['Time Series (15min)']
+                        setDataSeries(Object.keys(data).slice(0, 64).reverse().map(timestamp => {
+                            return Math.round(data[timestamp]['4. close'] * 100)/100
+                        }))
+                        setTimeSeries(Object.keys(data).slice(0, 64).reverse().map(timestamp => {
+                            return timestamp
+                        }))
+                        setLoading(false)
+                    }
+                })
+            }
+        })
+    }, [symbol])
 
     useEffect(() => {
         if (dataSeries[0] >= dataSeries[63]) {
@@ -39,6 +78,13 @@ export default function GetDayChart({ dataSeries, timeSeries, options }) {
       ]
     }
 
+    if (loading) {
+        return (
+            <ChartBoxTop style={{height: '100px'}}>
+                <Loader />
+            </ChartBoxTop>
+        )
+    }
     return (
         <ChartBoxTop>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>

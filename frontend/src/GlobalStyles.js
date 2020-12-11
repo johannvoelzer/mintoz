@@ -38,8 +38,13 @@ h4 {
     color: var(--white-75);
 }
 h5 {
-    margin: 2px 0;
+    margin: 0;
     color: var(--darkgrey-main);
+}
+h6 {
+    margin: 20px;
+    font-size: 24px;
+    color: var(--white-10);
 }
 p {
     color: var(--white-75);
@@ -59,6 +64,7 @@ hr {
     --white-75: rgb(246, 246, 246, 0.75);
     --white-50: rgb(246, 246, 246, 0.5);
     --white-25: rgb(246, 246, 246, 0.25);
+    --white-10: rgb(246, 246, 246, 0.1);
 
     --green-main: #00B49F;
     --green-50: rgb(0, 180, 159, 0.5);
@@ -84,13 +90,10 @@ hr {
     --lightshadow-white: -6px -6px 12px #FFFFFF;
     --darkshadow-white: 6px 6px 12px rgb(0, 0, 0, 0.08);
 
-    --lightshadow-grey: -6px -6px 12px #FFFFFF;
-    --darkshadow-grey: 6px 6px 12px #545D64;
-
     --lightshadow-button: -6px -6px 12px #1B4257;
     --darkshadow-button: 6px 6px 12px #0B1C26;
 
-    --lightshadow-chart: inset -6px -6px 12px white;
-    --darkshadow-chart: inset 6px 6px 12px #B7B7B7;
+    --lightshadow-input: inset -6px -6px 12px white;
+    --darkshadow-input: inset 6px 6px 12px #B7B7B7;
 }
 `

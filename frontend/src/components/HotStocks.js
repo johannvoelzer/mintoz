@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import ListBox from '../styles/boxes/ListBox'
+import AddToWatchlist from './AddToWatchlist'
+import { ForwardIcon } from './Icons'
 
 export default function HotStocks() {
 
@@ -15,21 +17,29 @@ export default function HotStocks() {
         {name: "NVIDIA Corp.", symbol: "NVDA", uid: "NVDA"},
         {name: "Alibaba Group Holding Ltd. Sponsored ADR", symbol: "BABA", uid: "BABA"},
         {name: "Plug Power Inc.", symbol: "PLUG", uid: "PLUG"},
-        {name: "Shopify Inc.", symbol: "SHOP", uid: "SHOP"},
+        {name: "Shopify Inc.", symbol: "SHOP", uid: "SHOP"}
     ]
 
     const stockListOverview = stockList.map(result => (
-        <NavLink key={JSON.stringify(result.symbol)} to={"/details/"+result.symbol+"/"+result.name}>
-            <ListBox>
-                <h4>{result.symbol}</h4>
-                <h5>{result.name.length >= 30 ? result.name.substr(0, 27) + "\u2026" : result.name}</h5>
-            </ListBox>
-        </NavLink>
+        <ListBox key={JSON.stringify(result.symbol)}>
+            <div style={{display: 'flex'}}>
+                <AddToWatchlist symbol={result.symbol} name={result.name} />
+                <NavLink to={"/details/"+result.symbol+"/"+result.name} style={{width: '400px', textDecoration: 'none'}}>
+                    <div style={{margin: '12px 0 0 12px'}}>
+                        <h5>{result.symbol}</h5>
+                        <h4>{result.name.length >= 27 ? result.name.substr(0, 23) + "\u2026" : result.name}</h4>
+                    </div>
+                </NavLink>
+                <NavLink to={"/details/"+result.symbol+"/"+result.name} style={{padding: '22px 16px 0 0'}}>
+                    <ForwardIcon />
+                </NavLink>
+            </div>
+        </ListBox>
     ))
 
     return (
         <div>
-            <h2>HOT STOCKS</h2>
+            <h6>HOT STOCKS</h6>
             {stockListOverview}
         </div>
     )

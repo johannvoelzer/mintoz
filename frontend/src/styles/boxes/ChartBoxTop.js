@@ -6,8 +6,8 @@ const ChartBoxTop = styled.div`
     text-align: left;
     background: var(--white-85);
     box-shadow:
-        var(--lightshadow-chart),
-        var(--darkshadow-chart);
+        var(--lightshadow-input),
+        var(--darkshadow-input);
 `
 
 export default ChartBoxTop

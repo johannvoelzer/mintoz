@@ -12,7 +12,6 @@ const WatchlistPage = () => {
         }
     return (
         <div>
-            <h2>WATCHLIST</h2>
             <Watchlist />
             <Navigation />
         </div>

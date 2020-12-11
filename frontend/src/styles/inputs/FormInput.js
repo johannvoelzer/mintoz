@@ -7,13 +7,13 @@ width: 380px;
 max-width: calc(100% - 40px);
 border: none;
 border-radius: 20px;
-background: var(--white-75);
+background: var(--white-85);
 color: var(--darkgrey-main);
 ::placeholder {color: var(--grey-main)};
 :enabled {font-weight: 600};
 box-shadow:
-  inset var(--lightshadow-grey),
-  inset var(--darkshadow-grey);
+  inset var(--lightshadow-input),
+  inset var(--darkshadow-input);
 `
 
 export default FormInput

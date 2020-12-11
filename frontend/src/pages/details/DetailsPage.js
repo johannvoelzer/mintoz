@@ -5,7 +5,7 @@ import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
 import { useParams } from 'react-router-dom'
 import StockInformation from '../../components/StockInformation'
-import Bookmark from '../../components/Bookmark'
+import BookmarkToggle from '../../components/BookmarkToggle'
 import DetailsHeader from '../../styles/headers/DetailsHeader'
 import BackButton from '../../components/BackButton'
 
@@ -19,9 +19,9 @@ const DetailsPage = () => {
     return (
         <div style={{marginBottom: '60px'}}>
             <DetailsHeader>
-                <BackButton />
+                <BackButton style={{marginTop: '4px'}} />
                 <h2 style={{margin: '0'}}>{stockSymbol}</h2>
-                <Bookmark symbol={stockSymbol} name={stockName} />
+                <BookmarkToggle symbol={stockSymbol} name={stockName} />
             </DetailsHeader>
             <h3 style={{margin: '0 30px'}}>{stockName}</h3>
             <StockInformation symbol={stockSymbol} />

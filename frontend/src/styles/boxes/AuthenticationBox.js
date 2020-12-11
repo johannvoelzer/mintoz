@@ -5,7 +5,7 @@ const AuthenticationBox = styled.div`
   margin: 20px 30px 20px;
   width: 400px;
   max-width: calc(100% - 60px);
-  border-radius: 30px;
+  border-radius: 40px;
   box-shadow:
     var(--lightshadow-darkblue),
     var(--darkshadow-darkblue);
