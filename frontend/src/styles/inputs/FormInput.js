@@ -12,8 +12,8 @@ color: var(--darkgrey-main);
 ::placeholder {color: var(--grey-main)};
 :enabled {font-weight: 600};
 box-shadow:
-  inset var(--lightshadow-input),
-  inset var(--darkshadow-input);
+  var(--lightshadow-input),
+  var(--darkshadow-input);
 `
 
 export default FormInput

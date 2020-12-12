@@ -93,7 +93,7 @@ hr {
     --lightshadow-button: -6px -6px 12px #1B4257;
     --darkshadow-button: 6px 6px 12px #0B1C26;
 
-    --lightshadow-input: inset -6px -6px 12px white;
-    --darkshadow-input: inset 6px 6px 12px #B7B7B7;
+    --lightshadow-input: inset -3px -3px 6px white;
+    --darkshadow-input: inset 3px 3px 6px #888888;
 }
 `

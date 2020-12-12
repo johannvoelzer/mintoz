@@ -9,6 +9,14 @@ export default function RemoveFromWatchlist(props) {
   
     function removeFromWatchlist() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).remove()
+        firebaseConfig.database().ref('HotStocks/').child(props.symbol).once('value', snapshot => {
+            const counter = snapshot.val().counter-1
+            firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
+                symbol: props.symbol,
+                name: props.name,
+                counter: counter
+            })
+        })
     }
 
     return (

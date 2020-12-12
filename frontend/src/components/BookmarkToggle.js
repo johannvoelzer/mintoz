@@ -7,6 +7,7 @@ import { AddIcon, RemoveIcon } from './Icons'
 export default function BookmarkToggle(props) {
     const { currentUser } = useContext(AuthContext)
     const [watchlist, setWatchlist] = useState(false)
+    const [counter, setCounter] = useState(0)
 
     useEffect(() => {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).on('value', snapshot => {
@@ -15,18 +16,36 @@ export default function BookmarkToggle(props) {
                 setWatchlist(true)
             }
         })
-    }, [currentUser.uid, props.symbol])
+        firebaseConfig.database().ref('HotStocks/').child(props.symbol).on('value', snapshot => {
+            const stockObject = snapshot.val()
+            if (stockObject !== null) {
+                setCounter(stockObject.counter)
+            } else {
+                setCounter(0)
+            }
+        })
+    }, [currentUser.uid, props.symbol, counter])
 
     function addStock() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,
         })
+        firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
+            symbol: props.symbol,
+            name: props.name,
+            counter: counter+1
+        })
     }
   
     function removeStock() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).remove()
         setWatchlist(false)
+        firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
+            symbol: props.symbol,
+            name: props.name,
+            counter: counter-1
+        })
     }
 
     return (

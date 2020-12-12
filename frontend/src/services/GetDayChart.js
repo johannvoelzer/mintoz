@@ -4,18 +4,17 @@ import { Line } from 'react-chartjs-2'
 import ChartBoxTop from '../styles/boxes/ChartBoxTop'
 import Loader from '../components/Loader'
 
-const url = 'https://www.alphavantage.co/query'
-const key1 = process.env.ALPHA_VANTAGE_API_KEY_1
-const key2 = process.env.ALPHA_VANTAGE_API_KEY_2
-
 export default function GetDayChart({ symbol, options }) {
     const [loading, setLoading] = useState(true)
     const [dataSeries, setDataSeries] = useState([])
     const [timeSeries, setTimeSeries] = useState([])
     const [dataColor, setDataColor] = useState('#EEEEEE')
     
+    const url = 'https://www.alphavantage.co/query'
+    const key = process.env.ALPHA_VANTAGE_API_KEY
+
     useEffect(() => {
-        axios.get(`${url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&apikey=${key1}`)  
+        axios.get(`${url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&apikey=${key}`)  
         .then(response => {
             if (response && response.data  && response.data['Time Series (15min)']) {
                 const data = response.data['Time Series (15min)']
@@ -26,23 +25,9 @@ export default function GetDayChart({ symbol, options }) {
                     return timestamp
                 }))
                 setLoading(false)
-            } else {
-                axios.get(`${url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=15min&apikey=${key2}`)  
-                .then(response => {
-                    if (response && response.data  && response.data['Time Series (15min)']) {
-                        const data = response.data['Time Series (15min)']
-                        setDataSeries(Object.keys(data).slice(0, 64).reverse().map(timestamp => {
-                            return Math.round(data[timestamp]['4. close'] * 100)/100
-                        }))
-                        setTimeSeries(Object.keys(data).slice(0, 64).reverse().map(timestamp => {
-                            return timestamp
-                        }))
-                        setLoading(false)
-                    }
-                })
             }
         })
-    }, [symbol])
+    }, [symbol, key])
 
     useEffect(() => {
         if (dataSeries[0] >= dataSeries[63]) {

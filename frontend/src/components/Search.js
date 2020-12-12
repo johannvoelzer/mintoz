@@ -14,22 +14,22 @@ export default function Search() {
         event.preventDefault()
         setQuery(event.target.value)
         if (event.target.value) {
-            axios.get(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${event.target.value}&apikey=${process.env.ALPHA_VANTAGE_API_KEY}`)     
+            axios.get(`https://ticker-2e1ica8b9.now.sh/keyword/${event.target.value}`)     
             .then(response => {
-                if (response && response.data && response.data.bestMatches) {
-                    setResults(response.data.bestMatches.map(result => (
-                            <div key={JSON.stringify(result['1. symbol'])} style={{display: 'flex'}}>
-                                <AddToWatchlist symbol={result['1. symbol']} name={result['2. name']} />
-                                <NavLink to={"/details/"+result['1. symbol']+"/"+result['2. name']} style={{width: '400px', textDecoration: 'none'}}>
-                                    <div style={{margin: '12px 0 0 12px'}}>
-                                        <h5>{result['1. symbol']}</h5>
-                                        <h4>{result['2. name'].length >= 27 ? result['2. name'].substr(0, 23) + "\u2026" : result['2. name']}</h4>
-                                    </div>
-                                </NavLink>
-                                <NavLink to={"/details/"+result['1. symbol']+"/"+result['2. name']} style={{padding: '22px 16px 0 0'}}>
-                                    <ForwardIcon />
-                                </NavLink>
-                            </div>
+                if (response && response.data) {
+                    setResults(response.data.map(result => (
+                        <div key={JSON.stringify(result['symbol'])} style={{display: 'flex'}}>
+                            <AddToWatchlist symbol={result['symbol']} name={result['name']} />
+                            <NavLink to={"/details/"+result['symbol']} style={{width: '400px', textDecoration: 'none'}}>
+                                <div style={{margin: '12px 0 0 12px'}}>
+                                    <h5>{result['symbol']}</h5>
+                                    <h4>{result['name'].length >= 27 ? result['name'].substr(0, 23) + "\u2026" : result['name']}</h4>
+                                </div>
+                            </NavLink>
+                            <NavLink to={"/details/"+result['symbol']} style={{padding: '22px 16px 0 0'}}>
+                                <ForwardIcon />
+                            </NavLink>
+                        </div>
                     )))
                 }
             })

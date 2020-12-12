@@ -14,18 +14,18 @@ export default function Watchlist() {
     const [watchlist, setWatchlist] = useState([])
 
     useEffect(() => {
-            firebaseConfig.database().ref('Watchlist/' + currentUser.uid).on('value', snapshot => {
-                if (snapshot.val()) {
-                    const stockObject = snapshot.val();
-                    const stockList = Object.keys(stockObject).map(key => ({
-                        ...stockObject[key],
-                        uid: key,
-                    }))
-                    setWatchlist(stockList)
-                } else {
-                    setWatchlist([])
-                }
-            })
+        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).on('value', snapshot => {
+            if (snapshot.val()) {
+                const stockObject = snapshot.val();
+                const stockList = Object.keys(stockObject).map(key => ({
+                    ...stockObject[key],
+                    uid: key,
+                }))
+                setWatchlist(stockList)
+            } else {
+                setWatchlist([])
+            }
+        })
     }, [currentUser.uid])
 
     const watchlistOverview = watchlist.map(result => (
