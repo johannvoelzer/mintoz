@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const PasswordForgetInput = styled.input`
   margin-bottom: 20px;
@@ -7,13 +7,13 @@ const PasswordForgetInput = styled.input`
   max-width: calc(100% - 104px);
   border: none;
   border-radius: 20px 0 0 20px;
-  background: var(--white-75);
+  background: var(--white-85);
   color: var(--darkgrey-main);
   ::placeholder {color: var(--grey-main)};
   :enabled {font-weight: 600};
   box-shadow:
-    inset var(--lightshadow-grey),
-    inset var(--darkshadow-grey);
+    inset var(--lightshadow-input),
+    inset var(--darkshadow-input);
 `
 
-export default PasswordForgetInput;
+export default PasswordForgetInput

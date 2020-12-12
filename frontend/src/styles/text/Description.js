@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const Description = styled.div`
     margin-top: ${(props) => (props.active ? '30px' : '0')};
@@ -6,4 +6,4 @@ const Description = styled.div`
     transition: font-size 1s ease-in-out, margin-top 0.5s ease-in-out;
 `
 
-export default Description;
+export default Description

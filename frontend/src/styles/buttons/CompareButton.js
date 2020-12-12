@@ -1,9 +1,9 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const CompareButton = styled.button`
     display: block;
     margin: 10px auto 0;
-    padding: 5px;
+    padding: 6px;
     width: 90px;
     font-weight: 600;
     border: none;
@@ -15,4 +15,4 @@ const CompareButton = styled.button`
     :hover {opacity: 100%;}
 `
 
-export default CompareButton;
+export default CompareButton

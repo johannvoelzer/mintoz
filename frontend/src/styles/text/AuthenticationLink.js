@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const AuthenticationLink = styled.div`
   margin-top: 50px;
@@ -18,4 +18,4 @@ const AuthenticationLink = styled.div`
   }
 `
 
-export default AuthenticationLink;
+export default AuthenticationLink

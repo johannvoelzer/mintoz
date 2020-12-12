@@ -1,10 +1,10 @@
-import styled from'styled-components/macro';
+import styled from'styled-components/macro'
 
 const LogoutButton = styled.button`
 margin: 10px;
 padding: 12px;
-width: 380px;
-max-width: calc(100% - 40px);
+width: 160px;
+max-width: calc(100% - 60px);
 font-weight: 600;
 cursor: pointer;
 border: none;
@@ -16,4 +16,4 @@ box-shadow:
   var(--darkshadow-button)};
 `
 
-export default LogoutButton;
+export default LogoutButton

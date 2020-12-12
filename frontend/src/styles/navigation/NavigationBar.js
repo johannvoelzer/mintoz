@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const NavigationBar = styled.nav`
     display: flex;
@@ -17,4 +17,4 @@ const NavigationBar = styled.nav`
     z-index: 100;
 `
 
-export default NavigationBar;
+export default NavigationBar

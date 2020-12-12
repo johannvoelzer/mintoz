@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import GlobalStyles from './GlobalStyles';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { AuthProvider } from "./components/Authentication";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import GlobalStyles from './GlobalStyles'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from "./components/Authentication"
 
 
 ReactDOM.render(
@@ -19,4 +19,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals();
+reportWebVitals()

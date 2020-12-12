@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const Note = styled.p`
   margin-top: 0;
@@ -9,4 +9,4 @@ const Note = styled.p`
   }
 `
 
-export default Note;
+export default Note

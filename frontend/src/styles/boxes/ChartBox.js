@@ -1,17 +1,10 @@
-import styled from 'styled-components/macro';
-
+import styled from 'styled-components/macro'
+    
 const ChartBox = styled.div`
     display: inline-block;
-    margin-top: 30px;
-    padding: 10px 0;
+    margin: 30px;
     width: 400px;
-    max-width: 100%;
-    border-radius: 30px;
-    text-align: left;
-    background: var(--white-main);
-    box-shadow:
-        var(--lightshadow-chart),
-        var(--darkshadow-chart);
+    max-width: calc(100% - 60px);
 `
 
-export default ChartBox;
+export default ChartBox

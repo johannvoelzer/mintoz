@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const PasswordForgetButton = styled.button`
   margin-bottom: 20px;
@@ -15,4 +15,4 @@ const PasswordForgetButton = styled.button`
     cursor: pointer;
 `
 
-export default PasswordForgetButton;
+export default PasswordForgetButton

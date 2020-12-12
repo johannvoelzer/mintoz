@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const Logo = styled.div`
   @media (max-height: 660px) {
@@ -9,4 +9,4 @@ const Logo = styled.div`
   }
 `
 
-export default Logo;
+export default Logo

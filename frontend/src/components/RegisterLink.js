@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../constants/Routes';
-import AuthenticationLink from '../styles/text/AuthenticationLink';
-import LinkText from '../styles/text/LinkText';
+import { Link } from 'react-router-dom'
+import * as ROUTES from '../constants/Routes'
+import AuthenticationLink from '../styles/text/AuthenticationLink'
+import LinkText from '../styles/text/LinkText'
 
 export default function RegisterLink() {
     return (
@@ -12,4 +12,4 @@ export default function RegisterLink() {
             </Link>
         </AuthenticationLink>
     )
-};
+}

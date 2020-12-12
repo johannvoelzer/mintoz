@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components/macro'
 
 const ToggleButton = styled.div`
     margin: 20px;
@@ -8,4 +8,4 @@ const ToggleButton = styled.div`
     :hover {opacity: 100%};
 `
 
-export default ToggleButton;
+export default ToggleButton
