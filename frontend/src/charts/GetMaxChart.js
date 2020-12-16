@@ -11,7 +11,7 @@ export default function GetMaxChart({ symbol, options, actualPrice }) {
     const [dataColor, setDataColor] = useState('#EEEEEE')
     
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?serietype=line&apikey=***`) 
+        axios.get(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?serietype=line&apikey=638d777cab0c32857e401d69e4a38e52`) 
         .then(response => {
             if (response && response.data  && response.data.historical) {
                 const data = response.data.historical

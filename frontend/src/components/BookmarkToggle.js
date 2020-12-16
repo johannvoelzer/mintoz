@@ -6,6 +6,7 @@ import { AddIcon, RemoveIcon } from './Icons'
 
 export default function BookmarkToggle(props) {
     const { currentUser } = useContext(AuthContext)
+
     const [watchlist, setWatchlist] = useState(false)
     const [counter, setCounter] = useState(0)
 

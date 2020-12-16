@@ -25,13 +25,13 @@ const DetailsPage = () => {
     const [dataLoading, setDataLoading] = useState(true)
 
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}?apikey=***`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}?apikey=638d777cab0c32857e401d69e4a38e52`)  
         .then(response => {
             if (response && response.data) {
                 setQuote(response.data[0])
             }
         })
-        axios.get(`https://financialmodelingprep.com/api/v3/profile/${stockSymbol}?apikey=***`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${stockSymbol}?apikey=638d777cab0c32857e401d69e4a38e52`)  
         .then(response => {
             if (response && response.data) {
                 setProfile(response.data[0])

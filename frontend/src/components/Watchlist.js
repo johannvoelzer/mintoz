@@ -27,7 +27,7 @@ export default function Watchlist() {
         })
     }, [currentUser.uid])
 
-    const watchlistOverview = watchlist.map(result => (
+    const watchlistItems = watchlist.map(result => (
             <ListBox key={JSON.stringify(result.symbol)}>
                 <div style={{display: 'flex'}}>
                     <RemoveBookmark symbol={result.symbol} name={result.name} />
@@ -47,7 +47,7 @@ export default function Watchlist() {
     if (watchlist.length !== 0) {
         return (
             <div>
-                {watchlistOverview}
+                {watchlistItems}
                 <div>
                     <NavLink to={ROUTES.EXPLORE}>
                         <AddButton>ADD MORE</AddButton>

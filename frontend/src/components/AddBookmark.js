@@ -17,15 +17,7 @@ export default function AddBookmark(props) {
                 setWatchlist(true)
             }
         })
-        firebaseConfig.database().ref('HotStocks/').child(props.symbol).once('value', snapshot => {
-            const stockObject = snapshot.val()
-            if (stockObject !== null) {
-                setCounter(stockObject.counter)
-            } else {
-                setCounter(0)
-            }
-        })
-    }, [currentUser.uid, props.symbol, counter])
+    }, [currentUser.uid, props.symbol])
 
     function addToWatchlist() {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
@@ -38,11 +30,6 @@ export default function AddBookmark(props) {
                 setWatchlist(true)
             }
         })
-        firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
-            symbol: props.symbol,
-            name: props.name,
-            counter: counter+1
-        })
         firebaseConfig.database().ref('HotStocks/').child(props.symbol).once('value', snapshot => {
             const stockObject = snapshot.val()
             if (stockObject !== null) {
@@ -50,6 +37,11 @@ export default function AddBookmark(props) {
             } else {
                 setCounter(0)
             }
+        })
+        firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
+            symbol: props.symbol,
+            name: props.name,
+            counter: counter+1
         })
     }
 

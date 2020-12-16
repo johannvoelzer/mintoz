@@ -32,7 +32,7 @@ export default function NewsList() {
     }, [currentUser.uid])
 
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/stock_news?tickers=${watchlist}&apikey=***`)     
+        axios.get(`https://financialmodelingprep.com/api/v3/stock_news?tickers=${watchlist}&apikey=638d777cab0c32857e401d69e4a38e52`)     
         .then(response => {
             if (response && response.data) {
                 setNews(response.data.slice(0,36).map(result => (

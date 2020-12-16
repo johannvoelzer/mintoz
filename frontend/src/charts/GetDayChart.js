@@ -11,7 +11,7 @@ export default function GetWeekChart({ symbol, options, actualPrice }) {
     const [dataColor, setDataColor] = useState('#EEEEEE')
     
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/5min/${symbol}?apikey=***`)
+        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/5min/${symbol}?apikey=638d777cab0c32857e401d69e4a38e52`)
         .then(response => {
             if (response && response.data) {
                 const data = response.data
@@ -62,7 +62,7 @@ export default function GetWeekChart({ symbol, options, actualPrice }) {
 
     if (loading) {
         return (
-            <ChartBoxTop style={{height: '210px'}}>
+            <ChartBoxTop style={{height: '310px'}}>
                 <Loader />
             </ChartBoxTop>
         )

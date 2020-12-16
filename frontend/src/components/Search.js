@@ -13,7 +13,7 @@ export default function Search() {
         event.preventDefault()
         setQuery(event.target.value)
         if (event.target.value) {
-            axios.get(`https://financialmodelingprep.com/api/v3/search?query=${event.target.value}&limit=6&apikey=***`) 
+            axios.get(`https://financialmodelingprep.com/api/v3/search?query=${event.target.value}&limit=6&apikey=638d777cab0c32857e401d69e4a38e52`) 
             .then(response => {
                 if (response && response.data) {
                     setResults(response.data
