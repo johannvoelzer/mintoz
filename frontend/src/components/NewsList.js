@@ -35,29 +35,31 @@ export default function NewsList() {
         axios.get(`https://financialmodelingprep.com/api/v3/stock_news?tickers=${watchlist}&apikey=638d777cab0c32857e401d69e4a38e52`)     
         .then(response => {
             if (response && response.data) {
-                setNews(response.data.slice(0,36).map(result => (
-                    <InformationBox style={{marginTop: '0'}} key={uuid()}>
-                        <NavLink to={"/details/"+result.symbol} style={{textDecoration: 'none'}}>
-                            <PhotoTag><h4>{result.symbol}</h4></PhotoTag>
-                        </NavLink>
-                        <a href={result.url} target="_blank" rel="noreferrer" style={{textDecoration: 'none'}}>
-                            <FeedPhoto src={result.image} alt={uuid()} />
-                            <h3>{result.title.length >= 136 ? result.title.substr(0, 132) + "\u2026" : result.title}</h3>
-                            <NewsLines>
-                                {result.text.length >= 154 ? result.text.substr(0, 150) + "\u2026" : result.text}
-                            </NewsLines>
-                            <p style={{marginBottom: '0', color: 'var(--green-main)'}}>{result.site}</p>
-                        </a>
-                    </InformationBox>
-                )))
+                setNews(response.data.slice(0,36))
             }
         })
     }, [watchlist])
 
+    const newsList = news.map(result => (
+        <InformationBox style={{marginTop: '0'}} key={uuid()}>
+            <NavLink to={"/details/"+result.symbol} style={{textDecoration: 'none'}}>
+                <PhotoTag><h4>{result.symbol}</h4></PhotoTag>
+            </NavLink>
+            <a href={result.url} target="_blank" rel="noreferrer" style={{textDecoration: 'none'}}>
+                <FeedPhoto src={result.image} alt={uuid()} />
+                <h3>{result.title.length >= 136 ? result.title.substr(0, 132) + "\u2026" : result.title}</h3>
+                <NewsLines>
+                    {result.text.length >= 154 ? result.text.substr(0, 150) + "\u2026" : result.text}
+                </NewsLines>
+                <p style={{marginBottom: '0', color: 'var(--green-main)'}}>{result.site}</p>
+            </a>
+        </InformationBox>
+    ))
+
     if (watchlist.length !== 0) {
         return (
             <div>
-                {news}
+                {newsList}
             </div>
         )
     }
