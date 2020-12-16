@@ -15,6 +15,11 @@ import { ReactComponent as AddSmall } from '../assets/AddSmall.svg'
 import { ReactComponent as RemoveSmall } from '../assets/RemoveSmall.svg'
 import { ReactComponent as TickIcon } from '../assets/TickIcon.svg'
 import { ReactComponent as SearchIcon } from '../assets/SearchIcon.svg'
+import { ReactComponent as LensIcon } from '../assets/LensIcon.svg'
+import { ReactComponent as NewspaperIcon } from '../assets/NewspaperIcon.svg'
+import { ReactComponent as CalendarIcon } from '../assets/CalendarIcon.svg'
+import { ReactComponent as PortfolioIcon } from '../assets/PortfolioIcon.svg'
+import { ReactComponent as NewsIcon } from '../assets/NewsIcon.svg'
 
 export {
   EventsIcon,
@@ -33,5 +38,10 @@ export {
   AddSmall,
   RemoveSmall,
   TickIcon,
-  SearchIcon
+  SearchIcon,
+  LensIcon,
+  NewspaperIcon,
+  CalendarIcon,
+  PortfolioIcon,
+  NewsIcon
 }

@@ -1,46 +1,57 @@
+import { useState, useEffect } from 'react'
+import firebaseConfig from '../firebaseConfig.js'
 import { NavLink } from 'react-router-dom'
 import ListBox from '../styles/boxes/ListBox'
-import AddToWatchlist from './AddToWatchlist'
+import AddBookmark from './AddBookmark'
 import { ForwardIcon } from './Icons'
 
 export default function HotStocks() {
+    const [hotlist, setHotlist] = useState([])
 
-    const stockList = [
-        {name: "Apple Inc.", symbol: "APPL", uid: "APPL"},
-        {name: "Tesla Inc.", symbol: "TSLA", uid: "TSLA"},
-        {name: "Alphabet Inc.", symbol: "GOOG", uid: "GOOG"},
-        {name: "PayPal Holdings Inc.", symbol: "PYPL", uid: "PYPL"},
-        {name: "Microsoft Corp.", symbol: "MSFT", uid: "MSFT"},
-        {name: "Advanced Micro Devices, Inc.", symbol: "AMD", uid: "AMD"},
-        {name: "Visa, Inc.", symbol: "V", uid: "V"},
-        {name: "Tencent Holdings Ltd. Unsponsored", symbol: "TCEHY", uid: "TCEHY"},
-        {name: "NVIDIA Corp.", symbol: "NVDA", uid: "NVDA"},
-        {name: "Alibaba Group Holding Ltd. Sponsored ADR", symbol: "BABA", uid: "BABA"},
-        {name: "Plug Power Inc.", symbol: "PLUG", uid: "PLUG"},
-        {name: "Shopify Inc.", symbol: "SHOP", uid: "SHOP"}
-    ]
+    useEffect(() => {
+        firebaseConfig.database().ref('HotStocks/').once('value', snapshot => {
+            if (snapshot.val()) {
+                const stockObject = snapshot.val();
+                const stockList = Object.keys(stockObject).map(key => ({
+                    ...stockObject[key],
+                    uid: key,
+                }))
+                setHotlist(stockList)
+            } else {
+                setHotlist([])
+            }
+        })
+    }, [])
 
-    const stockListOverview = stockList.map(result => (
+    const hotlistOverview = hotlist.slice(0, 12).sort((a, b) => a.counter - b.counter).reverse().map(result => (
         <ListBox key={JSON.stringify(result.symbol)}>
             <div style={{display: 'flex'}}>
-                <AddToWatchlist symbol={result.symbol} name={result.name} />
-                <NavLink to={"/details/"+result.symbol+"/"+result.name} style={{width: '400px', textDecoration: 'none'}}>
-                    <div style={{margin: '12px 0 0 12px'}}>
+                <AddBookmark symbol={result.symbol} name={result.name} />
+                <NavLink to={"/details/"+result.symbol} style={{width: '400px', textDecoration: 'none'}}>
+                    <div style={{margin: '12px 0 0 6px'}}>
                         <h5>{result.symbol}</h5>
-                        <h4>{result.name.length >= 27 ? result.name.substr(0, 23) + "\u2026" : result.name}</h4>
+                        <h4>{result.name.length >= 28 ? result.name.substr(0, 24) + "\u2026" : result.name}</h4>
                     </div>
                 </NavLink>
-                <NavLink to={"/details/"+result.symbol+"/"+result.name} style={{padding: '22px 16px 0 0'}}>
+                <NavLink to={"/details/"+result.symbol} style={{padding: '22px 16px 0 0'}}>
                     <ForwardIcon />
                 </NavLink>
             </div>
         </ListBox>
     ))
 
+    if (hotlist.length !== 0) {
+        return (
+            <div>
+                <h6>HOT STOCKS</h6>
+                {hotlistOverview}
+            </div>
+        )
+    }
     return (
         <div>
             <h6>HOT STOCKS</h6>
-            {stockListOverview}
+            <p>CURRENTLY NO HOT STOCKS</p>
         </div>
     )
 }

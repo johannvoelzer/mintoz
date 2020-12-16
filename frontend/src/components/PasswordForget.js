@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import firebaseConfig from '../firebaseConfig'
-import PasswordForgetInput from '../styles/inputs/PasswordForgetInput'
-import PasswordForgetButton from '../styles/buttons/PasswordForgetButton'
+import PasswordField from '../styles/fields/PasswordField'
+import PasswordButton from '../styles/buttons/PasswordButton'
 
 const PasswordForget = () => {
-  const [currentUser, setCurrentUser] = useState({
-    email: ''
-  })
+  const [currentUser, setCurrentUser] = useState({email: ''})
+
   const handleChange = (event) => {
     setCurrentUser({
       ...currentUser,
@@ -25,12 +24,10 @@ const PasswordForget = () => {
   const isInvalid =
   currentUser.email === ''
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <PasswordForgetInput type="email" name="email" placeholder="EMAIL" onChange={handleChange} />
-        <PasswordForgetButton disabled={isInvalid} type="submit">RESET</PasswordForgetButton>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <PasswordField type="email" name="email" placeholder="EMAIL" onChange={handleChange} />
+      <PasswordButton disabled={isInvalid} type="submit">RESET</PasswordButton>
+    </form>
   )
 }
   

@@ -6,8 +6,8 @@ const InformationBox = styled.div`
     margin: 30px;
     padding: 20px;
     width: 400px;
-    text-align: left;
     max-width: calc(100% - 60px);
+    text-align: left;
     border-radius: 30px;
     box-shadow:
         var(--lightshadow-darkblue),

@@ -12,7 +12,7 @@ const ExplorePage = () => {
             return <Redirect to={ROUTES.LOGIN} />
         }
     return (
-        <div>
+        <div style={{marginBottom: '100px'}}>
             <h2>EXPLORE</h2>
             <Search />
             <Navigation />

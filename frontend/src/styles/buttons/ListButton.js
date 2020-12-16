@@ -5,9 +5,7 @@ const ListButton = styled.div`
     border-radius: 30px 0 0 30px;
     cursor: pointer;
     opacity: 30%;
-    :hover {
-        opacity: 100%;
-    }
+    :hover {opacity: 100%;};
 `
 
 export default ListButton

@@ -4,37 +4,36 @@ import { UpIcon, DownIcon } from './Icons'
 import Details from '../styles/text/Details'
 import Description from '../styles/text/Description'
 import ToggleButton from '../styles/buttons/ToggleButton'
-import Loader from './Loader'
 
-export default function CompanyDetails({result}) {
+export default function CompanyDetails({profile}) {
     const [companyDescription, setCompanyDescription] = useState(false)
 
-    if (result.Country) {
+    if (profile.description) {
         return (
             <InformationBox>
                 <Details>
                     <div>
-                        <h4>{result.Country}</h4>
+                        {profile.country ? <h4>{profile.country}</h4> : <h4>–</h4>}
                         <h5>COUNTRY</h5>
                     </div>
                     <div style={{width: '100px'}}>
-                        <h4>{result.Exchange}</h4>
+                        {profile.exchangeShortName ? <h4>{profile.exchangeShortName}</h4> : <h4>–</h4>}
                         <h5>EXCHANGE</h5>
                     </div>
                 </Details>
                 <br />
                 <Details>
                     <div>
-                        <h4>{result.Sector}</h4>
+                        {profile.sector ? <h4>{profile.sector}</h4> : <h4>–</h4>}
                         <h5>SECTOR</h5>
                     </div>
                     <div style={{width: '100px'}}>
-                        {result.FullTimeEmployees === '0' ? <h4>–</h4> : <h4>{result.FullTimeEmployees}</h4>}
+                        {profile.fullTimeEmployees ? <h4>{profile.fullTimeEmployees}</h4> : <h4>–</h4>}
                         <h5>EMPLOYEES</h5>
                     </div>
                 </Details>
                 <Description active={companyDescription}>
-                    <p>{result.Description}</p>
+                    <p>{profile.description}</p>
                     {!companyDescription && 
                     <ToggleButton style={{marginBottom: '0'}} onClick={() => setCompanyDescription(true)}><DownIcon /></ToggleButton>
                     }
@@ -45,5 +44,29 @@ export default function CompanyDetails({result}) {
             </InformationBox>
         )
     }
-    return <Loader />
+    return (
+        <InformationBox>
+                <Details>
+                    <div>
+                        {profile.country ? <h4>{profile.country}</h4> : <h4>–</h4>}
+                        <h5>COUNTRY</h5>
+                    </div>
+                    <div style={{width: '100px'}}>
+                        {profile.exchangeShortName ? <h4>{profile.exchangeShortName}</h4> : <h4>–</h4>}
+                        <h5>EXCHANGE</h5>
+                    </div>
+                </Details>
+                <br />
+                <Details>
+                    <div>
+                        {profile.sector ? <h4>{profile.sector}</h4> : <h4>–</h4>}
+                        <h5>SECTOR</h5>
+                    </div>
+                    <div style={{width: '100px'}}>
+                        {profile.fullTimeEmployees ? <h4>{profile.fullTimeEmployees}</h4> : <h4>–</h4>}
+                        <h5>EMPLOYEES</h5>
+                    </div>
+                </Details>
+            </InformationBox>
+    )
 }

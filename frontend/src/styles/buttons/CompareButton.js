@@ -3,13 +3,12 @@ import styled from 'styled-components/macro'
 const CompareButton = styled.button`
     display: block;
     margin: 10px auto 0;
-    padding: 6px;
-    width: 90px;
+    padding: 10px 20px;
     font-weight: 600;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background: var(--green-main);
-    color: #FFFFFF;
+    color: white;
     cursor: pointer;
     opacity: 80%;
     :hover {opacity: 100%;}

@@ -11,7 +11,7 @@ background: var(--darkblue-main);
 color: var(--white-50);
 cursor: pointer;
 :hover {
-  color: var(--white-main)
+  color: var(--white-main);
 }
 box-shadow:
   var(--lightshadow-darkblue),

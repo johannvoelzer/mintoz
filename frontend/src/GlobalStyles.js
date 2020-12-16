@@ -27,22 +27,31 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 h2 {
+    margin: 40px;
     color: var(--white-50);
 }
 h3 {
-    color: var(--white-main);
+    margin-bottom: 0;
+    color: var(--white-85);
 }
 h4 {
     margin: 0;
-    color: var(--white-75);
+    color: var(--white-85);
 }
 h5 {
-    margin: 0;
+    margin: 2px 0 0;
     color: var(--darkgrey-main);
 }
 h6 {
-    margin: 20px;
+    margin: 30px;
     font-size: 24px;
     color: var(--white-10);
 }
@@ -53,11 +62,15 @@ p {
 hr {
     height: 2px;
     border: none;
+    border-radius: 6px;
     background-color: var(--darkgrey-25);
+    box-shadow: inset -2px -2px 4px #1B4257,
+                inset 2px 2px 4px #0B1C26;
 }
 
 :root {
     --darkblue-main: #132F3E;
+    --darkblue-dark: #122936;
   
     --white-main: #EEEEEE;
     --white-85: rgb(246, 246, 246, 0.85);
@@ -67,14 +80,17 @@ hr {
     --white-10: rgb(246, 246, 246, 0.1);
 
     --green-main: #00B49F;
-    --green-50: rgb(0, 180, 159, 0.5);
+    --green-50: #14726E;
 
     --grey-main: #8B9499;
+    --grey-50: rgb(232, 232, 232 , 0.25);
 
     --darkgrey-main: #4D616D;
     --darkgrey-25: rgb(77, 97, 109, 0.25);
+    --darkgrey-85: rgb(77, 97, 109, 0.85);
 
     --red-main: #DD3B66;
+    --red-50: #89374F;
 
     --yellow-main: #E0A431;
 
@@ -82,10 +98,15 @@ hr {
     
     --lightblue-main: #009EFF;
 
-    --shadow-navigation: 0 -10px 20px #102835;
+    --shadow-header: 0 8px 16px #0D202B;
+
+    --shadow-navigation: 0 -10px 16px rgb(26, 36, 41, 0.8);
 
     --lightshadow-darkblue: -6px -6px 12px #17384a;
     --darkshadow-darkblue: 6px 6px 12px #0f2632;
+
+    --lightshadow-tag: -3px -3px 6px #17384a;
+    --darkshadow-tag: 3px 3px 6px #0f2632;
     
     --lightshadow-white: -6px -6px 12px #FFFFFF;
     --darkshadow-white: 6px 6px 12px rgb(0, 0, 0, 0.08);
@@ -93,7 +114,13 @@ hr {
     --lightshadow-button: -6px -6px 12px #1B4257;
     --darkshadow-button: 6px 6px 12px #0B1C26;
 
-    --lightshadow-input: inset -6px -6px 12px white;
-    --darkshadow-input: inset 6px 6px 12px #B7B7B7;
+    --lightshadow-flat: inset -6px -6px 12px #17384a;
+    --darkshadow-flat: inset 6px 6px 12px #0f2632;
+
+    --lightshadow-input: inset -3px -3px 6px white;
+    --darkshadow-input: inset 3px 3px 6px #888888;
+
+    --lightshadow-rating: -6px -6px 12px #0B1C26;
+    --darkshadow-rating: 6px 6px 12px #1B4257;
 }
 `

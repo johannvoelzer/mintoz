@@ -10,7 +10,7 @@ const ComparePage = () => {
             return <Redirect to={ROUTES.LOGIN} />
         }
     return (
-        <div>
+        <div style={{marginBottom: '100px'}}>
             <h2>COMPARE</h2>
             <Navigation />
         </div>
