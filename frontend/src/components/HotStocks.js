@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import firebaseConfig from '../firebaseConfig.js'
 import { NavLink } from 'react-router-dom'
 import ListBox from '../styles/boxes/ListBox'
-import AddToWatchlist from './AddToWatchlist'
+import AddBookmark from './AddBookmark'
 import { ForwardIcon } from './Icons'
 
 export default function HotStocks() {
     const [hotlist, setHotlist] = useState([])
 
     useEffect(() => {
-        firebaseConfig.database().ref('HotStocks/').on('value', snapshot => {
+        firebaseConfig.database().ref('HotStocks/').once('value', snapshot => {
             if (snapshot.val()) {
                 const stockObject = snapshot.val();
                 const stockList = Object.keys(stockObject).map(key => ({
@@ -23,14 +23,14 @@ export default function HotStocks() {
         })
     }, [])
 
-    const hotlistOverview = hotlist.map(result => (
+    const hotlistOverview = hotlist.slice(0, 12).sort((a, b) => a.counter - b.counter).reverse().map(result => (
         <ListBox key={JSON.stringify(result.symbol)}>
             <div style={{display: 'flex'}}>
-                <AddToWatchlist symbol={result.symbol} name={result.name} />
+                <AddBookmark symbol={result.symbol} name={result.name} />
                 <NavLink to={"/details/"+result.symbol} style={{width: '400px', textDecoration: 'none'}}>
-                    <div style={{margin: '12px 0 0 12px'}}>
+                    <div style={{margin: '12px 0 0 6px'}}>
                         <h5>{result.symbol}</h5>
-                        <h4>{result.name.length >= 27 ? result.name.substr(0, 23) + "\u2026" : result.name}</h4>
+                        <h4>{result.name.length >= 28 ? result.name.substr(0, 24) + "\u2026" : result.name}</h4>
                     </div>
                 </NavLink>
                 <NavLink to={"/details/"+result.symbol} style={{padding: '22px 16px 0 0'}}>

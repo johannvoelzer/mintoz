@@ -4,7 +4,7 @@ const NavigationBar = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    @media (min-width: 768px) {
+    @media (min-width: 620px) {
         justify-content: center;
         gap: 50px;
     }

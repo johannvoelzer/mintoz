@@ -4,8 +4,8 @@ import RegisterPage from './pages/register/RegisterPage'
 import EventsPage from './pages/events/EventsPage'
 import ComparePage from './pages/compare/ComparePage'
 import ExplorePage from './pages/explore/ExplorePage'
-import WatchlistPage from './pages/watchlist/WatchlistPage'
-import ProfilePage from './pages/profile/ProfilePage'
+import NewsPage from './pages/news/NewsPage'
+import PortfolioPage from './pages/portfolio/PortfolioPage'
 import DetailsPage from './pages/details/DetailsPage'
 import * as ROUTES from './constants/Routes'
 
@@ -26,11 +26,11 @@ const App = () => (
       <Route exact path={ROUTES.EXPLORE}>
         <ExplorePage />
       </Route>
-      <Route path={ROUTES.WATCHLIST}>
-        <WatchlistPage />
+      <Route path={ROUTES.NEWS}>
+        <NewsPage />
       </Route>
-      <Route path={ROUTES.PROFILE}>
-        <ProfilePage />
+      <Route path={ROUTES.PORTFOLIO}>
+        <PortfolioPage />
       </Route>
       <Route path={ROUTES.DETAILS}>
         <DetailsPage />

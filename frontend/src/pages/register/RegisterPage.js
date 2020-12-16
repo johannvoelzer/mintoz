@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
-import RegisterForm from '../../components/RegisterForm'
-import LoginLink from '../../components/LoginLink'
+import RegistrationForm from '../../components/Registration'
 import Logo from '../../styles/images/Logo'
 import { Mintoz } from '../../components/Icons'
+import { AuthenticationLink, LinkText } from '../../styles/text/AuthenticationLink'
 import AuthenticationBox from '../../styles/boxes/AuthenticationBox'
 
 function RegisterPage() {
@@ -15,14 +15,19 @@ function RegisterPage() {
         }
     return(
         <div>
-            <h2>REGISTER</h2>
             <Logo>
                 <Mintoz />
             </Logo>
+            <h2 style={{margin: '0 0 20px'}}>mintoz</h2>
             <AuthenticationBox>
-                <RegisterForm />
+                <RegistrationForm />
             </AuthenticationBox>
-            <LoginLink />
+            <AuthenticationLink>
+                <p style={{margin: '0'}}>Already have an account?</p>
+                <Link to={ROUTES.LOGIN} style={{textDecoration: 'none'}}>
+                    <LinkText>LOGIN</LinkText>
+                </Link>
+            </AuthenticationLink>
         </div>
     )
 };

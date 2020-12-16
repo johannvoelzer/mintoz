@@ -5,7 +5,7 @@ const Logo = styled.div`
     display: none;
   }
   @media (min-height: 720px) {
-    margin: 30px;
+    margin-top: 60px;
   }
 `
 

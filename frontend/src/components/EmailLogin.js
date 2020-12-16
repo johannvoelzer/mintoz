@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import firebaseConfig from '../firebaseConfig'
-import FormInput from '../styles/inputs/FormInput'
+import FormField from '../styles/fields/FormField'
 import LoginButton from '../styles/buttons/LoginButton'
 
-const EmailLogin = () => {
+const LoginForm = () => {
   const [currentUser, setCurrentUser] = useState({
     email: '',
     password: ''
@@ -29,12 +29,12 @@ const EmailLogin = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <FormInput type="email" name="email" placeholder="EMAIL" onChange={handleChange} />
-        <FormInput type="password" name="password" placeholder="PASSWORD" onChange={handleChange} />
+        <FormField type="email" name="email" placeholder="EMAIL" onChange={handleChange} />
+        <FormField type="password" name="password" placeholder="PASSWORD" onChange={handleChange} />
         <LoginButton disabled={isInvalid} type="submit">LOGIN</LoginButton>
       </form>
     </div>
   )
 }
   
-export default EmailLogin;
+export default LoginForm;

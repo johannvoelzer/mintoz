@@ -10,13 +10,15 @@ export default function BookmarkToggle(props) {
     const [counter, setCounter] = useState(0)
 
     useEffect(() => {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).on('value', snapshot => {
+        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).once('value', snapshot => {
             const stockObject = snapshot.val();
             if (stockObject !== null) {
                 setWatchlist(true)
+            } else {
+                setWatchlist(false)
             }
         })
-        firebaseConfig.database().ref('HotStocks/').child(props.symbol).on('value', snapshot => {
+        firebaseConfig.database().ref('HotStocks/').child(props.symbol).once('value', snapshot => {
             const stockObject = snapshot.val()
             if (stockObject !== null) {
                 setCounter(stockObject.counter)
@@ -31,6 +33,7 @@ export default function BookmarkToggle(props) {
             symbol: props.symbol,
             name: props.name,
         })
+        setWatchlist(true)
         firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,

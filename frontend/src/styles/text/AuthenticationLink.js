@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-const AuthenticationLink = styled.div`
+export const AuthenticationLink = styled.div`
   margin-top: 50px;
   @media (max-height: 580px) {
       margin-top: 30px
@@ -18,4 +18,13 @@ const AuthenticationLink = styled.div`
   }
 `
 
-export default AuthenticationLink
+export const LinkText = styled.p`
+  margin: 0 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white-50);
+  :hover {color: var(--white-main)};
+  @media (max-width: 370px) {
+    font-size: 14px;
+  };
+`

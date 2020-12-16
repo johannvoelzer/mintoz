@@ -1,54 +1,73 @@
 import Navigation from '../../components/Navigation'
 import axios from 'axios'
 import { useContext, useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
 import { useParams } from 'react-router-dom'
 import Chart from '../../components/Chart'
 import Fundamentals from '../../components/Fundamentals'
+import StockRating from '../../components/StockRating'
+import StockAnalysis from '../../components/StockAnalysis'
 import CompanyDetails from '../../components/CompanyDetails'
+import Description from '../../components/Description'
 import BookmarkToggle from '../../components/BookmarkToggle'
-import DetailsHeader from '../../styles/headers/DetailsHeader'
-import BackButton from '../../components/BackButton'
+import AnalyseBox from '../../styles/boxes/AnalyseBox'
+import BackButton from '../../styles/buttons/BackButton'
+import { BackIcon } from '../../components/Icons'
 import Loader from '../../components/Loader'
 
 const DetailsPage = () => {
     const {stockSymbol} = useParams()
-    const [loading, setLoading] = useState(true)
-    const [result, setResult] = useState([])
 
-    const url = 'https://www.alphavantage.co/query'
-    const key = process.env.ALPHA_VANTAGE_API_KEY
+    const [profile, setProfile] = useState([])
+    const [quote, setQuote] = useState([])
+    const [dataLoading, setDataLoading] = useState(true)
 
     useEffect(() => {
-        axios.get(`${url}?function=OVERVIEW&symbol=${stockSymbol}&apikey=${key}`)  
-        .then(response => {  
-            if (response && response.data) {  
-                setResult(response.data)
-                setLoading(false)
+        axios.get(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}?apikey=***`)  
+        .then(response => {
+            if (response && response.data) {
+                setQuote(response.data[0])
             }
         })
-    }, [stockSymbol, key])
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${stockSymbol}?apikey=***`)  
+        .then(response => {
+            if (response && response.data) {
+                setProfile(response.data[0])
+                setDataLoading(false)
+            }
+        })
+    }, [stockSymbol])
+
+    const history = useHistory()
 
     const { currentUser } = useContext(AuthContext)
+
     if (!currentUser) {
         return <Redirect to={ROUTES.LOGIN} />
     }
-    if (loading) {
+    if (dataLoading) {
         return <Loader />
     }
     return (
-        <div style={{marginBottom: '60px'}}>
-            <DetailsHeader>
-                <BackButton style={{marginTop: '4px'}} />
+        <div style={{marginBottom: '100px'}}>
+            <div style={{margin: '30px', display: 'flex', justifyContent: 'space-around'}}>
+                <BackButton onClick={() => history.goBack()}>
+                    <BackIcon />
+                </BackButton>
                 <h2 style={{margin: '0'}}>{stockSymbol}</h2>
-                <BookmarkToggle symbol={stockSymbol} name={result.Name} />
-            </DetailsHeader>
-            <h3 style={{margin: '0 30px'}}>{result.Name}</h3>
-            <Chart symbol={stockSymbol} />
-            <Fundamentals result={result}/>
-            <CompanyDetails result={result}/>
+                <BookmarkToggle symbol={stockSymbol} name={profile.companyName} />
+            </div>
+            <h3 style={{margin: '0 30px'}}>{profile.companyName}</h3>
+            <Chart symbol={stockSymbol} price={quote.price} />
+            <AnalyseBox>
+                <StockRating symbol={stockSymbol} />
+                <StockAnalysis quote={quote} />
+            </AnalyseBox>
+            <Fundamentals quote={quote} profile={profile} />
+            <CompanyDetails profile={profile} />
+            <Description profile={profile} />
             <Navigation />
         </div>
     );

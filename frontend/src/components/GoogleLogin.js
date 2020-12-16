@@ -10,7 +10,7 @@ export default function GoogleLogin() {
     }
     return (
         <form>
-          <Google style={{position: 'absolute', margin: '26px'}} />
+          <Google style={{position: 'absolute', margin: '26px', opacity: '80%'}} />
           <GoogleButton onClick={signInWithGoogle} type="submit" style={{paddingLeft: '36px'}}> LOGIN WITH GOOGLE</GoogleButton>
         </form>
     )
