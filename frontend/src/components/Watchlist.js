@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import ListBox from '../styles/boxes/ListBox'
 import { SectorBox, SectorTags } from '../styles/boxes/SectorBox'
 import RemoveBookmark from './RemoveBookmark'
-import { ForwardIcon, SearchIcon } from './Icons'
+import { ForwardIcon, PortfolioIcon } from './Icons'
 import * as ROUTES from '../constants/Routes'
 import AddButton from '../styles/buttons/AddButton'
 import Loader from './Loader'
@@ -87,7 +87,7 @@ export default function Watchlist() {
         }
         return (
             <div>
-                <SearchIcon style={{margin: '40px 0 20px'}}/>
+                <PortfolioIcon style={{margin: '40px 0 20px'}}/>
                 <p>YOUR PORTFOLIO IS EMPTY</p>
                 <h3>START ADDING STOCKS</h3>
                 <div>
