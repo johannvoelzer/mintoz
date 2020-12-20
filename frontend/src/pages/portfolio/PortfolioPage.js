@@ -4,15 +4,17 @@ import { Redirect } from 'react-router-dom'
 import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
 import Watchlist from '../../components/Watchlist'
+import Header from '../../components/Header'
 
 const PortfolioPage = () => {
+    const title = 'PORTFOLIO'
     const { currentUser } = useContext(AuthContext)
         if (!currentUser) {
             return <Redirect to={ROUTES.LOGIN} />
         }
     return (
         <div style={{marginBottom: '100px'}}>
-            <h2>PORTFOLIO</h2>
+            <Header title={title} />
             <Watchlist />
             <Navigation />
         </div>

@@ -6,7 +6,7 @@ import GetYearChart from '../charts/GetYearChart'
 import GetMaxChart from '../charts/GetMaxChart'
 import ChartBox, { ChartTabs, ChartTab, ChartContent } from '../styles/boxes/ChartBox'
 
-export default function Chart({ symbol, price }) {
+export default function Chart({ symbol, price, change }) {
     const [active, setActive] = useState(0)
 
     const options = {
@@ -56,11 +56,12 @@ export default function Chart({ symbol, price }) {
     }
 
     const actualPrice = JSON.stringify(price)
+    const actualChange = JSON.stringify(change)
 
     return (
         <ChartBox>
             <ChartContent active={active === 0}>
-                <GetDayChart symbol={symbol} options={options} actualPrice={actualPrice} />
+                <GetDayChart symbol={symbol} options={options} actualPrice={actualPrice} actualChange={actualChange} />
             </ChartContent>
             <ChartContent active={active === 1}>
                 <GetWeekChart symbol={symbol} options={options} actualPrice={actualPrice} />

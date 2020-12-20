@@ -17,7 +17,7 @@ export default function Search() {
             .then(response => {
                 if (response && response.data) {
                     setResults(response.data
-                    .filter(item => !item['symbol'].includes('.', '#', '%', '[', ']', 'null', '') && !item['name'].includes('%'))
+                    .filter(item => !item['symbol'].includes('.', '#', '%', '[', ']') && !item['name'].includes('%'))
                     .map(result => (
                         <div key={JSON.stringify(result['symbol'])} style={{display: 'flex'}}>
                             <AddBookmark symbol={result['symbol']} name={result['name']} />

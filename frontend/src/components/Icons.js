@@ -1,5 +1,3 @@
-import { ReactComponent as EventsIcon } from '../assets/EventsIcon.svg'
-import { ReactComponent as CompareIcon } from '../assets/CompareIcon.svg'
 import { ReactComponent as Plus } from '../assets/Plus.svg'
 import { ReactComponent as WatchlistIcon } from '../assets/WatchlistIcon.svg'
 import { ReactComponent as ProfileIcon } from '../assets/ProfileIcon.svg'
@@ -20,10 +18,12 @@ import { ReactComponent as NewspaperIcon } from '../assets/NewspaperIcon.svg'
 import { ReactComponent as CalendarIcon } from '../assets/CalendarIcon.svg'
 import { ReactComponent as PortfolioIcon } from '../assets/PortfolioIcon.svg'
 import { ReactComponent as NewsIcon } from '../assets/NewsIcon.svg'
+import { ReactComponent as DarkIcon } from '../assets/DarkIcon.svg'
+import { ReactComponent as LogoutIcon } from '../assets/LogoutIcon.svg'
+import { ReactComponent as MarketIcon } from '../assets/MarketIcon.svg'
+import { ReactComponent as CollectionIcon } from '../assets/CollectionIcon.svg'
 
 export {
-  EventsIcon,
-  CompareIcon,
   Plus,
   WatchlistIcon,
   ProfileIcon,
@@ -43,5 +43,9 @@ export {
   NewspaperIcon,
   CalendarIcon,
   PortfolioIcon,
-  NewsIcon
+  NewsIcon,
+  DarkIcon,
+  LogoutIcon,
+  MarketIcon,
+  CollectionIcon
 }

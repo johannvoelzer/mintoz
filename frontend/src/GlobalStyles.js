@@ -77,20 +77,23 @@ hr {
     --white-75: rgb(246, 246, 246, 0.75);
     --white-50: rgb(246, 246, 246, 0.5);
     --white-25: rgb(246, 246, 246, 0.25);
-    --white-10: rgb(246, 246, 246, 0.1);
+    --white-10: rgb(246, 246, 246, 0.08);
 
     --green-main: #00B49F;
     --green-50: #14726E;
+    --green-10: rgb(0, 180, 159, 0.1);
 
     --grey-main: #8B9499;
     --grey-50: rgb(232, 232, 232 , 0.25);
 
     --darkgrey-main: #4D616D;
     --darkgrey-25: rgb(77, 97, 109, 0.25);
+    --darkgrey-50: rgb(77, 97, 109, 0.5);
     --darkgrey-85: rgb(77, 97, 109, 0.85);
 
     --red-main: #DD3B66;
     --red-50: #89374F;
+    --red-12: rgb(221, 59, 102, 0.12);
 
     --yellow-main: #E0A431;
 
@@ -105,8 +108,8 @@ hr {
     --lightshadow-darkblue: -6px -6px 12px #17384a;
     --darkshadow-darkblue: 6px 6px 12px #0f2632;
 
-    --lightshadow-tag: -3px -3px 6px #17384a;
-    --darkshadow-tag: 3px 3px 6px #0f2632;
+    --lightshadow-tag: -2px -2px 4px #17384a;
+    --darkshadow-tag: 2px 2px 4px #0f2632;
     
     --lightshadow-white: -6px -6px 12px #FFFFFF;
     --darkshadow-white: 6px 6px 12px rgb(0, 0, 0, 0.08);
