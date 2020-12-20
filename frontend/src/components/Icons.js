@@ -12,7 +12,6 @@ import { ReactComponent as RemoveIcon } from '../assets/RemoveIcon.svg'
 import { ReactComponent as AddSmall } from '../assets/AddSmall.svg'
 import { ReactComponent as RemoveSmall } from '../assets/RemoveSmall.svg'
 import { ReactComponent as TickIcon } from '../assets/TickIcon.svg'
-import { ReactComponent as SearchIcon } from '../assets/SearchIcon.svg'
 import { ReactComponent as LensIcon } from '../assets/LensIcon.svg'
 import { ReactComponent as NewspaperIcon } from '../assets/NewspaperIcon.svg'
 import { ReactComponent as CalendarIcon } from '../assets/CalendarIcon.svg'
@@ -38,7 +37,6 @@ export {
   AddSmall,
   RemoveSmall,
   TickIcon,
-  SearchIcon,
   LensIcon,
   NewspaperIcon,
   CalendarIcon,
