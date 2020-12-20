@@ -1,10 +1,9 @@
 import Navigation from '../../components/Navigation'
 import axios from 'axios'
 import { useContext, useState, useEffect } from 'react'
-import { Redirect, useHistory } from 'react-router-dom'
+import { Redirect, useHistory, useParams } from 'react-router-dom'
 import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
-import { useParams } from 'react-router-dom'
 import Chart from '../../components/Chart'
 import Fundamentals from '../../components/Fundamentals'
 import StockRating from '../../components/StockRating'
@@ -22,20 +21,20 @@ const DetailsPage = () => {
 
     const [profile, setProfile] = useState([])
     const [quote, setQuote] = useState([])
-    const [dataLoading, setDataLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}?apikey=638d777cab0c32857e401d69e4a38e52`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/quote/${stockSymbol}?apikey=***`)  
         .then(response => {
             if (response && response.data) {
                 setQuote(response.data[0])
             }
         })
-        axios.get(`https://financialmodelingprep.com/api/v3/profile/${stockSymbol}?apikey=638d777cab0c32857e401d69e4a38e52`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${stockSymbol}?apikey=***`)  
         .then(response => {
             if (response && response.data) {
                 setProfile(response.data[0])
-                setDataLoading(false)
+                setLoading(true)
             }
         })
     }, [stockSymbol])
@@ -47,30 +46,32 @@ const DetailsPage = () => {
     if (!currentUser) {
         return <Redirect to={ROUTES.LOGIN} />
     }
-    if (dataLoading) {
-        return <Loader />
+    if (loading && quote) {
+        return (
+            <div style={{marginBottom: '100px'}}>
+                <div style={{margin: '30px', display: 'flex', justifyContent: 'space-around'}}>
+                    <BackButton onClick={() => history.goBack()}>
+                        <BackIcon />
+                    </BackButton>
+                    <h2 style={{margin: '0'}}>{stockSymbol}</h2>
+                    <BookmarkToggle symbol={stockSymbol} name={profile.companyName} />
+                </div>
+                <h3 style={{margin: '0 30px'}}>{profile.companyName}</h3>
+                <Chart symbol={stockSymbol} price={quote.price} change={quote.changesPercentage} />
+                <AnalyseBox>
+                    <StockRating symbol={stockSymbol} />
+                    <StockAnalysis quote={quote} />
+                </AnalyseBox>
+                <Fundamentals quote={quote} profile={profile} />
+                <CompanyDetails profile={profile} />
+                <Description profile={profile} />
+                <Navigation />
+            </div>
+        )
     }
     return (
-        <div style={{marginBottom: '100px'}}>
-            <div style={{margin: '30px', display: 'flex', justifyContent: 'space-around'}}>
-                <BackButton onClick={() => history.goBack()}>
-                    <BackIcon />
-                </BackButton>
-                <h2 style={{margin: '0'}}>{stockSymbol}</h2>
-                <BookmarkToggle symbol={stockSymbol} name={profile.companyName} />
-            </div>
-            <h3 style={{margin: '0 30px'}}>{profile.companyName}</h3>
-            <Chart symbol={stockSymbol} price={quote.price} />
-            <AnalyseBox>
-                <StockRating symbol={stockSymbol} />
-                <StockAnalysis quote={quote} />
-            </AnalyseBox>
-            <Fundamentals quote={quote} profile={profile} />
-            <CompanyDetails profile={profile} />
-            <Description profile={profile} />
-            <Navigation />
-        </div>
-    );
-};
+        <Loader />
+    )
+}
 
 export default DetailsPage

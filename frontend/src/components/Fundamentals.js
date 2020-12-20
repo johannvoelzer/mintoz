@@ -1,8 +1,5 @@
-import { NavLink } from 'react-router-dom'
-import * as ROUTES from '../constants/Routes'
 import InformationBox from '../styles/boxes/InformationBox'
 import Details from '../styles/text/Details'
-import CompareButton from '../styles/buttons/CompareButton'
 import Loader from './Loader'
 
 export default function Fundamentals({quote, profile}) {
@@ -22,7 +19,7 @@ export default function Fundamentals({quote, profile}) {
                 <hr />
                 <Details>
                     <h5>EPS</h5>
-                    {quote.eps === '0' ? <h4>–</h4> : <h4>{Math.round(quote.eps * 100)/100}</h4>}
+                    {quote.eps === 'None' ? <h4>–</h4> : <h4>{Math.round(quote.eps * 100)/100}</h4>}
                 </Details>
                 <hr />
                 <Details>
@@ -36,12 +33,14 @@ export default function Fundamentals({quote, profile}) {
                 </Details>
                 <hr />
                 <Details>
+                    <h5>AVG VOLUME</h5>
+                    {quote.avgVolume === 'None' ? <h4>–</h4> : (quote.avgVolume >= 1000000 ? <h4>{JSON.stringify(Math.round(quote.avgVolume / 10000) / 100)}M</h4> : <h4>{JSON.stringify(Math.round(quote.avgVolume / 10) / 100)}K</h4>)}
+                </Details>
+                <hr />
+                <Details>
                     <h5>BETA</h5>
                     {profile.beta === 'None' ? <h4>–</h4> : <h4>{JSON.stringify(Math.round(profile.beta * 100) / 100)}</h4>}
                 </Details>
-                <NavLink to={ROUTES.COMPARE} style={{textDecoration: 'none'}}>
-                    <CompareButton>COMPARE</CompareButton>
-                </NavLink>
             </InformationBox>
         )
     }

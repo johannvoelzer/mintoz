@@ -1,8 +1,8 @@
 import { Switch, Route } from 'react-router-dom'
 import LoginPage from './pages/login/LoginPage'
 import RegisterPage from './pages/register/RegisterPage'
-import EventsPage from './pages/events/EventsPage'
-import ComparePage from './pages/compare/ComparePage'
+import MarketPage from './pages/market/MarketPage'
+import CollectionPage from './pages/collection/CollectionPage'
 import ExplorePage from './pages/explore/ExplorePage'
 import NewsPage from './pages/news/NewsPage'
 import PortfolioPage from './pages/portfolio/PortfolioPage'
@@ -17,11 +17,11 @@ const App = () => (
       <Route path={ROUTES.REGISTER}>
         <RegisterPage />
       </Route>
-      <Route path={ROUTES.EVENTS}>
-        <EventsPage />
+      <Route path={ROUTES.MARKET}>
+        <MarketPage />
       </Route>
-      <Route path={ROUTES.COMPARE}>
-        <ComparePage />
+      <Route path={ROUTES.COLLECTIONS}>
+        <CollectionPage />
       </Route>
       <Route exact path={ROUTES.EXPLORE}>
         <ExplorePage />

@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 
 export const RatingBox = styled.div`
-    margin-bottom: 60px;
+    margin-bottom: 58px;
     padding: 20px;
     text-align: left;
     border-radius: 30px;

@@ -13,11 +13,11 @@ export default function Search() {
         event.preventDefault()
         setQuery(event.target.value)
         if (event.target.value) {
-            axios.get(`https://financialmodelingprep.com/api/v3/search?query=${event.target.value}&limit=6&apikey=638d777cab0c32857e401d69e4a38e52`) 
+            axios.get(`https://financialmodelingprep.com/api/v3/search?query=${event.target.value}&limit=6&apikey=***`) 
             .then(response => {
                 if (response && response.data) {
                     setResults(response.data
-                    .filter(item => !item['symbol'].includes('.', '#', '%', '[', ']', 'null', '') && !item['name'].includes('%'))
+                    .filter(item => !item['symbol'].includes('.', '#', '%', '[', ']') && !item['name'].includes('%'))
                     .map(result => (
                         <div key={JSON.stringify(result['symbol'])} style={{display: 'flex'}}>
                             <AddBookmark symbol={result['symbol']} name={result['name']} />

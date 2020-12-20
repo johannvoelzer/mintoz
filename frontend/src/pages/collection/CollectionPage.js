@@ -3,18 +3,22 @@ import { useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
+import Header from '../../components/Header'
+import CollectionGroups from '../../components/CollectionGroups'
 
-const ComparePage = () => {
+const CollectionPage = () => {
+    const title = 'COLLECTIONS'
     const { currentUser } = useContext(AuthContext)
         if (!currentUser) {
             return <Redirect to={ROUTES.LOGIN} />
         }
     return (
         <div style={{marginBottom: '100px'}}>
-            <h2>COMPARE</h2>
+            <Header title={title} />
+            <CollectionGroups />
             <Navigation />
         </div>
     );
 };
 
-export default ComparePage
+export default CollectionPage

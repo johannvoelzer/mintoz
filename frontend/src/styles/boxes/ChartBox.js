@@ -16,7 +16,7 @@ export default ChartBox
 
 export const ChartBoxTop = styled.div`
     padding-bottom: 18px;
-    margin: 12px 12px 0;
+    margin: 10px 12px 0;
     border-radius: 20px;
     text-align: left;
     border: 4px 4px 0 solid var(--darkblue-main);

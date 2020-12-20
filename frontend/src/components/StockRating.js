@@ -9,7 +9,7 @@ export default function StockRating({symbol}) {
     const [ratingNumber, setRatingNumber] = useState()
 
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/rating/${symbol}?apikey=638d777cab0c32857e401d69e4a38e52`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/rating/${symbol}?apikey=***`)  
         .then(response => {
             if (response && response.data && response.data.length !== 0) {
                 setRating(response.data[0])

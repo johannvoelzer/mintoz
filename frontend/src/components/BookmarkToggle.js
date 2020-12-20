@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react'
+import axios from 'axios'
 import { AuthContext } from './Authentication'
 import firebaseConfig from "../firebaseConfig.js"
 import BookmarkButton from '../styles/buttons/BookmarkButton'
@@ -11,7 +12,7 @@ export default function BookmarkToggle(props) {
     const [counter, setCounter] = useState(0)
 
     useEffect(() => {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).once('value', snapshot => {
+        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child('All').child(props.symbol).once('value', snapshot => {
             const stockObject = snapshot.val();
             if (stockObject !== null) {
                 setWatchlist(true)
@@ -23,33 +24,50 @@ export default function BookmarkToggle(props) {
             const stockObject = snapshot.val()
             if (stockObject !== null) {
                 setCounter(stockObject.counter)
-            } else {
-                setCounter(0)
             }
         })
-    }, [currentUser.uid, props.symbol, counter])
+    }, [currentUser.uid, props.symbol])
 
     function addStock() {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).set({
-            symbol: props.symbol,
-            name: props.name,
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=***`)  
+        .then(response => {
+            if (response && response.data) {
+                const sector = response.data[0].sector
+                firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child('All').child(props.symbol).set({
+                    symbol: props.symbol,
+                    name: props.name,
+                })
+                firebaseConfig.database().ref('Watchlist/' + currentUser.uid + '/' + sector).child(props.symbol).set({
+                    symbol: props.symbol,
+                    name: props.name
+                })
+                setWatchlist(true)
+            }
         })
-        setWatchlist(true)
         firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,
             counter: counter+1
         })
+        setCounter(counter+1)
     }
   
     function removeStock() {
-        firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child(props.symbol).remove()
-        setWatchlist(false)
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=***`)  
+        .then(response => {
+            if (response && response.data) {
+                const sector = response.data[0].sector
+                firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child('All').child(props.symbol).remove()
+                firebaseConfig.database().ref('Watchlist/' + currentUser.uid + '/' + sector).child(props.symbol).remove()
+                setWatchlist(false)
+            }
+        })
         firebaseConfig.database().ref('HotStocks/').child(props.symbol).set({
             symbol: props.symbol,
             name: props.name,
             counter: counter-1
         })
+        setCounter(counter-1)
     }
 
     return (
