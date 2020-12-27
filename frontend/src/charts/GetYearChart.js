@@ -70,8 +70,10 @@ export default function GetYearChart({ symbol, options, actualPrice }) {
     return (
         <ChartBoxTop>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${actualPrice}</h4>
-                {dataSeries[0]>dataSeries[252] ? <h4 style={{margin: '10px 20px 25px', color: dataColor}}>-{Math.round((1-dataSeries[252]/dataSeries[0])*10000)/100}%</h4> : <h4 style={{margin: '10px 20px 25px', color: dataColor}}>+{Math.round((1-dataSeries[252]/dataSeries[0])*(-10000))/100}%</h4>}
+                <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${Math.round(actualPrice * 100) / 100}</h4>
+                {dataSeries[0]>dataSeries[252] ?
+                <h4 style={{margin: '10px 20px 25px', color: dataColor}}>-{Math.round((1-dataSeries[252]/dataSeries[0])*10000)/100}%</h4> :
+                <h4 style={{margin: '10px 20px 25px', color: dataColor}}>+{Math.round((1-dataSeries[252]/dataSeries[0])*(-10000))/100}%</h4>}
             </div>
             <Line useRefs="chart" data={data} options={options} />
         </ChartBoxTop>

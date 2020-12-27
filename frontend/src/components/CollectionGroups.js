@@ -59,8 +59,8 @@ export default function CollectionsGroups() {
                             <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.marketCap / 10000) / 100)}M</h4>}
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h4>{result.companyName.length >= 22 ?
-                            result.companyName.substr(0, 18) + "\u2026" :
+                            <h4>{result.companyName.length >= 19 ?
+                            result.companyName.substr(0, 16) + "\u2026" :
                             result.companyName}</h4>
                             <h5>MKT CAP</h5>
                         </div>
@@ -84,8 +84,8 @@ export default function CollectionsGroups() {
                             <h4 style={{color: 'var(--green-main)'}}>${JSON.stringify(Math.round(result.lastAnnualDividend * 100) / 100)}</h4>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h4>{result.companyName.length >= 21 ?
-                            result.companyName.substr(0, 17) + "\u2026" :
+                            <h4>{result.companyName.length >= 18 ?
+                            result.companyName.substr(0, 15) + "\u2026" :
                             result.companyName}</h4>
                             <h5>DIVIDEND</h5>
                         </div>
@@ -109,7 +109,7 @@ export default function CollectionsGroups() {
                             <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.beta * 100) / 100)}</h4>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h4>{result.companyName.length >= 24 ?
+                            <h4>{result.companyName.length >= 23 ?
                             result.companyName.substr(0, 20) + "\u2026" :
                             result.companyName}</h4>
                             <h5>BETA</h5>

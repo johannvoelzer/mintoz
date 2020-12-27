@@ -4,6 +4,7 @@ import FormField from '../styles/fields/FormField'
 import LoginButton from '../styles/buttons/LoginButton'
 
 const RegistrationForm = () => {
+  const [errorMessage, setErrorMessage] = useState('')
   const [currentUser, setCurrentUser] = useState({
     name: '',
     email: '',
@@ -17,14 +18,13 @@ const RegistrationForm = () => {
     })
   } 
   const handleSubmit = (event) => {
-    event.preventDefault();    
+    event.preventDefault()   
     const { email, password } = event.target.elements;
-    try {
-      firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value)  
+      firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value)
+      .catch(error => {
+        setErrorMessage(error.message)
+      }) 
       setCurrentUser(true)
-    } catch (error) {
-      alert(error)
-    }
   }
   const isInvalid =
   currentUser.password !== currentUser.passwordTwo ||
@@ -38,6 +38,7 @@ const RegistrationForm = () => {
       <FormField type="password" name="password" placeholder="PASSWORD" onChange={handleChange} />
       <FormField type="password" name="passwordTwo" placeholder="CONFIRM PASSWORD" onChange={handleChange} />
       <LoginButton disabled={isInvalid} type="submit">REGISTER</LoginButton>
+      {errorMessage !== '' ? <p style={{margin: '0 20px 20px', fontSize: '14px', color: 'var(--red-main)'}}>{errorMessage}</p> : <div />}
     </form>
   )
 }

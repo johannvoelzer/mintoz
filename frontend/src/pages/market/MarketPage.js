@@ -13,7 +13,7 @@ const MarketPage = () => {
             return <Redirect to={ROUTES.LOGIN} />
         }
     return (
-        <div>
+        <div style={{marginBottom: '100px'}}>
             <Header title={title} />
             <MarketOverview />
             <Navigation />

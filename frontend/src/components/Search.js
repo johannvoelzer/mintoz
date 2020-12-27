@@ -24,7 +24,7 @@ export default function Search() {
                             <NavLink to={"/details/"+result['symbol']} style={{width: '400px', textDecoration: 'none'}}>
                                 <div style={{margin: '12px 0 0 12px'}}>
                                     <h5>{result['symbol']}</h5>
-                                    <h4>{result['name'].length >= 32 ? result['name'].substr(0, 28) + "\u2026" : result['name']}</h4>
+                                    <h4>{result['name'].length >= 28 ? result['name'].substr(0, 24) + "\u2026" : result['name']}</h4>
                                 </div>
                             </NavLink>
                         </div>

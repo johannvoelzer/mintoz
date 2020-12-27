@@ -35,7 +35,7 @@ export const Ma50Line = styled.div`
     margin: -15px 0 0 -22px;
     height: 40px;
     background-image: linear-gradient(var(--green-50), var(--green-50));
-    background-size: 2px;
+    background-size: 2px 40px;
     background-repeat: no-repeat;
     background-position: center;
 `
@@ -69,7 +69,7 @@ export const Ma200Line = styled.div`
     margin: -40px 0 10px -26px;
     height: 75px;
     background-image: linear-gradient(var(--red-50), var(--red-50));
-    background-size: 2px;
+    background-size: 2px 75px;
     background-repeat: no-repeat;
     background-position: center;
 `
