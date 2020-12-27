@@ -31,14 +31,14 @@ export default function MarketOverview() {
             <NavLink to={"/details/"+result.ticker} style={{textDecoration: 'none'}}>
                 <MarketCard>
                     <h5>{result.ticker}</h5>
-                    {result.companyName.length >= 22 ?
-                    <h4>{result.companyName.substr(0, 19) + "\u2026"}</h4> :
+                    {result.companyName.length >= 21 ?
+                    <h4>{result.companyName.substr(0, 18) + "\u2026"}</h4> :
                     <h4>{result.companyName}</h4>}
                     <CardDetails>
                         <h4 style={{marginTop: '20px'}}>${result.price}</h4>
                         {result.changesPercentage.substring(1, result.changesPercentage.length-2) >= 0 ?
-                        <DetailsChange style={{background: 'var(--green-10)', color: 'var(--green-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1)}</DetailsChange> :
-                        <DetailsChange style={{background: 'var(--red-12)', color: 'var(--red-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1)}</DetailsChange>}
+                        <DetailsChange style={{background: 'var(--green-10)', color: 'var(--green-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1).substr(0, 8)}</DetailsChange> :
+                        <DetailsChange style={{background: 'var(--red-12)', color: 'var(--red-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1).substr(0, 8)}</DetailsChange>}
                     </CardDetails>
                 </MarketCard>
             </NavLink>
@@ -50,14 +50,14 @@ export default function MarketOverview() {
             <NavLink to={"/details/"+result.ticker} style={{textDecoration: 'none'}}>
                 <MarketCard>
                     <h5>{result.ticker}</h5>
-                    {result.companyName.length >= 22 ?
-                    <h4>{result.companyName.substr(0, 19) + "\u2026"}</h4> :
+                    {result.companyName.length >= 21 ?
+                    <h4>{result.companyName.substr(0, 18) + "\u2026"}</h4> :
                     <h4>{result.companyName}</h4>}
                     <CardDetails>
                         <h4 style={{marginTop: '20px'}}>${result.price}</h4>
                         {result.changesPercentage.substring(1, result.changesPercentage.length-2) >= 0 ?
-                        <DetailsChange style={{background: 'var(--green-10)', color: 'var(--green-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1)}</DetailsChange> :
-                        <DetailsChange style={{background: 'var(--red-12)', color: 'var(--red-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1)}</DetailsChange>}
+                        <DetailsChange style={{background: 'var(--green-10)', color: 'var(--green-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1).substr(0, 8)}</DetailsChange> :
+                        <DetailsChange style={{background: 'var(--red-12)', color: 'var(--red-main)'}}>{result.changesPercentage.substring(1, result.changesPercentage.length-1).substr(0, 8)}</DetailsChange>}
                     </CardDetails>
                 </MarketCard>
             </NavLink>

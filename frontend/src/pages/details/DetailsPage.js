@@ -53,7 +53,7 @@ const DetailsPage = () => {
                     <BackButton onClick={() => history.goBack()}>
                         <BackIcon />
                     </BackButton>
-                    <h2 style={{margin: '0'}}>{stockSymbol}</h2>
+                    <h2 style={{margin: '2px 0 0'}}>{stockSymbol}</h2>
                     <BookmarkToggle symbol={stockSymbol} name={profile.companyName} />
                 </div>
                 <h3 style={{margin: '0 30px'}}>{profile.companyName}</h3>

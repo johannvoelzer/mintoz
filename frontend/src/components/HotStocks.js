@@ -31,7 +31,7 @@ export default function HotStocks() {
                 <NavLink to={"/details/"+result.symbol} style={{width: '400px', textDecoration: 'none'}}>
                     <div style={{margin: '12px 0 0'}}>
                         <h5>{result.symbol}</h5>
-                        <h4>{result.name.length >= 28 ? result.name.substr(0, 24) + "\u2026" : result.name}</h4>
+                        <h4>{result.name.length >= 26 ? result.name.substr(0, 23) + "\u2026" : result.name}</h4>
                     </div>
                 </NavLink>
                 <NavLink to={"/details/"+result.symbol} style={{padding: '22px 16px 0 0'}}>

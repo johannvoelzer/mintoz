@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 const StartScreen = styled.img`
     margin: 0 30px -30px;
     width: 800px;
+    height: 600px;
     max-width: 60%;
     @media (max-width: 1023px) {
         display: none;

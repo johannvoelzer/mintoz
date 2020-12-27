@@ -70,8 +70,10 @@ export default function GetWeekChart({ symbol, options, actualPrice, actualChang
     return (
         <ChartBoxTop>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${actualPrice}</h4>
-                {actualChange >= 0 ? <h4 style={{margin: '10px 20px 25px', color: 'var(--green-main)'}}>+{actualChange}%</h4> : <h4 style={{margin: '10px 20px 25px', color: 'var(--red-main)'}}>{actualChange}%</h4>}
+                <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${Math.round(actualPrice * 100) / 100}</h4>
+                {actualChange >= 0 ?
+                <h4 style={{margin: '10px 20px 25px', color: 'var(--green-main)'}}>+{actualChange}%</h4> :
+                <h4 style={{margin: '10px 20px 25px', color: 'var(--red-main)'}}>{actualChange}%</h4>}
             </div>
             <Line useRefs="chart" data={data} options={options} />
         </ChartBoxTop>

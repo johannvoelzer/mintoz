@@ -43,7 +43,7 @@ export default function StockRating({symbol}) {
             </Details>
             <RatingField>
                 <RatingBar style={{background: dataColor, opacity: '80%', width: ratingNumber/5*100 + '%'}}>
-                    <h5 style={{marginLeft: '8px', color: 'white'}}>{ratingNumber}</h5>
+                    <h5 style={{margin: '4px 0 0 8px', color: 'white'}}>{ratingNumber}</h5>
                 </RatingBar>
             </RatingField>
         </RatingBox>

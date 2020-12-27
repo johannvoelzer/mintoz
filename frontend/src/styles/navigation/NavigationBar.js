@@ -1,12 +1,11 @@
 import styled from 'styled-components/macro'
 
-const NavigationBar = styled.nav`
+export const NavigationBar = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
     @media (min-width: 620px) {
         justify-content: center;
-        gap: 50px;
     }
     height: 74px;
     width: 100%;
@@ -17,4 +16,14 @@ const NavigationBar = styled.nav`
     z-index: 100;
 `
 
-export default NavigationBar
+export const LeftTab = styled.div`
+    @media (min-width: 620px) {
+        margin-right: 50px;
+    }
+`
+
+export const RightTab = styled.div`
+    @media (min-width: 620px) {
+        margin-left: 50px;
+    }
+`
