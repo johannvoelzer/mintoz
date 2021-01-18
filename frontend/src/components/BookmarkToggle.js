@@ -13,7 +13,7 @@ export default function BookmarkToggle(props) {
 
     useEffect(() => {
         firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child('All').child(props.symbol).once('value', snapshot => {
-            const stockObject = snapshot.val();
+            const stockObject = snapshot.val()
             if (stockObject !== null) {
                 setWatchlist(true)
             } else {
@@ -29,13 +29,15 @@ export default function BookmarkToggle(props) {
     }, [currentUser.uid, props.symbol])
 
     function addStock() {
-        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=***`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=...`)  
         .then(response => {
             if (response && response.data) {
                 const sector = response.data[0].sector
+                const price = response.data[0].price
                 firebaseConfig.database().ref('Watchlist/' + currentUser.uid).child('All').child(props.symbol).set({
                     symbol: props.symbol,
                     name: props.name,
+                    price: price
                 })
                 firebaseConfig.database().ref('Watchlist/' + currentUser.uid + '/' + sector).child(props.symbol).set({
                     symbol: props.symbol,
@@ -53,7 +55,7 @@ export default function BookmarkToggle(props) {
     }
   
     function removeStock() {
-        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=***`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=...`)  
         .then(response => {
             if (response && response.data) {
                 const sector = response.data[0].sector

@@ -5,7 +5,7 @@ import PasswordButton from '../styles/buttons/PasswordButton'
 
 const PasswordForget = () => {
   const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
   const [currentUser, setCurrentUser] = useState({email: ''})
 
   const handleChange = (event) => {

@@ -2,7 +2,6 @@ import styled from 'styled-components/macro'
 
 export const SectorBox = styled.div`
     display: inline-block;
-    margin: 0 0 60px;
     padding: 10px;
     width: 400px;
     @media (min-width: 920px) {
@@ -28,5 +27,5 @@ export const SectorTags = styled.div`
     };
     font-weight: 600;
     border-radius: 10px;
-    background-color: var(--blue-main);
+    background-color: var(--blue-60);
 `

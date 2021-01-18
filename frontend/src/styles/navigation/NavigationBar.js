@@ -1,13 +1,14 @@
 import styled from 'styled-components/macro'
 
 export const NavigationBar = styled.nav`
+    padding-bottom: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     @media (min-width: 620px) {
         justify-content: center;
     }
-    height: 74px;
+    height: 84px;
     width: 100%;
     position: fixed;
     bottom: 0;

@@ -27,17 +27,19 @@ export default function AddBookmark(props) {
     }, [currentUser.uid, props.symbol])
 
     function addToWatchlist() {
-        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=***`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/profile/${props.symbol}?apikey=...`)  
         .then(response => {
             if (response && response.data) {
                 const sector = response.data[0].sector
+                const price = response.data[0].price
                 firebaseConfig.database().ref('Watchlist/' + currentUser.uid + '/' + sector).child(props.symbol).set({
                     symbol: props.symbol,
                     name: props.name
                 })
                 firebaseConfig.database().ref('Watchlist/' + currentUser.uid ).child('All').child(props.symbol).set({
                     symbol: props.symbol,
-                    name: props.name
+                    name: props.name,
+                    price: price
                 })
                 firebaseConfig.database().ref('Watchlist/' + currentUser.uid + '/' + sector).child(props.symbol).once('value', snapshot => {
                     const stockObject = snapshot.val()

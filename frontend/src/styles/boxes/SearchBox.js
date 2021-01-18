@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 
 export const SearchBox = styled.div`
+    margin-bottom: 30px;
     display: inline-block;
     width: 400px;
     @media (min-width: 920px) {

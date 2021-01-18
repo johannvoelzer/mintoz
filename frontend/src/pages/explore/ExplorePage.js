@@ -17,8 +17,8 @@ const ExplorePage = () => {
         <div style={{marginBottom: '100px'}}>
             <Header title={title} />
             <Search />
-            <Navigation />
             <HotStocks />
+            <Navigation />
         </div>
     )
 }

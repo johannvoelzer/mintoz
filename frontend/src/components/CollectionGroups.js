@@ -6,28 +6,27 @@ import ListBox from '../styles/boxes/ListBox'
 import { CollectionTab, CollectionContent } from '../styles/boxes/CollectionBox'
 import Loader from './Loader'
 
-export default function CollectionsGroups() {
+export default function CollectionGroups() {
     const [active, setActive] = useState(0)
-    
     const [mostBlueChips, setMostBlueChips] = useState([])
     const [mostHighDividend, setMostHighDividend] = useState([])
     const [mostVolatile, setMostVolatile] = useState([])
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=100000000000&betaMoreThan=0.6&volumeMoreThan=1000000&limit=50&apikey=***`)     
+        axios.get(`https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=100000000000&betaMoreThan=0.6&volumeMoreThan=1000000&limit=50&apikey=...`)     
         .then(response => {
             if (response && response.data) {
                 setMostBlueChips(response.data)
             }
         })
-        axios.get(`https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000000&betaMoreThan=0.8&volumeMoreThan=10000&dividendMoreThan=5.5&limit=50&apikey=***`)     
+        axios.get(`https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000000&betaMoreThan=0.8&volumeMoreThan=10000&dividendMoreThan=5.5&limit=50&apikey=...`)     
         .then(response => {
             if (response && response.data) {
                 setMostHighDividend(response.data)
             }
         })
-        axios.get(`https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000000&betaMoreThan=2&volumeMoreThan=6000000&limit=50&apikey=***`)     
+        axios.get(`https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000000&betaMoreThan=2&volumeMoreThan=6000000&limit=50&apikey=...`)     
         .then(response => {
             if (response && response.data) {
                 setMostVolatile(response.data)
@@ -54,14 +53,16 @@ export default function CollectionsGroups() {
                     <div style={{margin: '10px 18px 0 0'}}>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
                             <h5>{result.symbol}</h5>
-                            {result.marketCap >= 1000000000 ?
+                            {result.marketCap >= 1000000000000 ?
+                            <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.marketCap / 10000000000) / 100)}T</h4> :
+                            (result.marketCap >= 1000000000 ?
                             <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.marketCap / 10000000) / 100)}B</h4> :
-                            <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.marketCap / 10000) / 100)}M</h4>}
+                            <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.marketCap / 10000) / 100)}M</h4>)}
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h4>{result.companyName.length >= 19 ?
-                            result.companyName.substr(0, 16) + "\u2026" :
-                            result.companyName}</h4>
+                            <h4>{window.innerWidth < 460 ?
+                            (result.companyName.length >= 19 ? result.companyName.substr(0, 16) + "\u2026" : result.companyName) :
+                            (result.companyName.length >= 27 ? result.companyName.substr(0, 24) + "\u2026" : result.companyName)}</h4>
                             <h5>MKT CAP</h5>
                         </div>
                     </div>
@@ -84,9 +85,9 @@ export default function CollectionsGroups() {
                             <h4 style={{color: 'var(--green-main)'}}>${JSON.stringify(Math.round(result.lastAnnualDividend * 100) / 100)}</h4>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h4>{result.companyName.length >= 18 ?
-                            result.companyName.substr(0, 15) + "\u2026" :
-                            result.companyName}</h4>
+                            <h4>{window.innerWidth < 460 ?
+                            (result.companyName.length >= 19 ? result.companyName.substr(0, 16) + "\u2026" : result.companyName) :
+                            (result.companyName.length >= 27 ? result.companyName.substr(0, 24) + "\u2026" : result.companyName)}</h4>
                             <h5>DIVIDEND</h5>
                         </div>
                     </div>
@@ -109,9 +110,9 @@ export default function CollectionsGroups() {
                             <h4 style={{color: 'var(--green-main)'}}>{JSON.stringify(Math.round(result.beta * 100) / 100)}</h4>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h4>{result.companyName.length >= 23 ?
-                            result.companyName.substr(0, 20) + "\u2026" :
-                            result.companyName}</h4>
+                            <h4>{window.innerWidth < 460 ?
+                            (result.companyName.length >= 19 ? result.companyName.substr(0, 16) + "\u2026" : result.companyName) :
+                            (result.companyName.length >= 27 ? result.companyName.substr(0, 24) + "\u2026" : result.companyName)}</h4>
                             <h5>BETA</h5>
                         </div>
                     </div>

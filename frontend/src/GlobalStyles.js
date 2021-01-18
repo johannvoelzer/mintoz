@@ -20,23 +20,23 @@ body {
     input:focus,
     select:focus,
     textarea:focus,
-    button:focus {
+    button:focus,
+    a:focus,
+    h1:focus,
+    h2:focus,
+    h3:focus,
+    h4:focus,
+    h5:focus,
+    h6:focus {
         outline: none;
-    }
+    };
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
 h2 {
     margin: 40px;
-    color: var(--white-50);
+    color: var(--white-main);
 }
 h3 {
     margin-bottom: 0;
@@ -48,12 +48,13 @@ h4 {
 }
 h5 {
     margin: 2px 0 0;
+    height: 22px;
     color: var(--darkgrey-main);
 }
 h6 {
     margin: 30px;
     font-size: 24px;
-    color: var(--white-10);
+    color: var(--white-main);
 }
 p {
     color: var(--white-75);
@@ -77,9 +78,10 @@ hr {
     --white-75: rgb(246, 246, 246, 0.75);
     --white-50: rgb(246, 246, 246, 0.5);
     --white-25: rgb(246, 246, 246, 0.25);
-    --white-10: rgb(246, 246, 246, 0.08);
+    --white-10: rgb(246, 246, 246, 0.1);
 
     --green-main: #00B49F;
+    --green-90: rgb(0, 180, 159, 0.9);
     --green-50: #14726E;
     --green-10: rgb(0, 180, 159, 0.1);
 
@@ -98,6 +100,7 @@ hr {
     --yellow-main: #E0A431;
 
     --blue-main: #0067A7;
+    --blue-60: rgb(0, 103, 167, 0.6);
     
     --lightblue-main: #009EFF;
 
@@ -110,12 +113,18 @@ hr {
 
     --lightshadow-tag: -2px -2px 4px #17384a;
     --darkshadow-tag: 2px 2px 4px #0f2632;
+
+    --lightshadow-tag: -2px -2px 4px rgb(23, 56, 74, 0.8);
+    --darkshadow-tag: 2px 2px 4px rgb(15, 38, 50, 0.8);
     
-    --lightshadow-white: -6px -6px 12px #FFFFFF;
+    --lightshadow-white: -6px -6px 10px #FFFFFF;
     --darkshadow-white: 6px 6px 12px rgb(0, 0, 0, 0.08);
 
     --lightshadow-button: -6px -6px 12px #1B4257;
     --darkshadow-button: 6px 6px 12px #0B1C26;
+
+    --lightshadow-small: -3px -3px 6px #17384a;
+    --darkshadow-small: 3px 3px 6px #0f2632;
 
     --lightshadow-flat: inset -6px -6px 12px #17384a;
     --darkshadow-flat: inset 6px 6px 12px #0f2632;

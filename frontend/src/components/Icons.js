@@ -12,15 +12,19 @@ import { ReactComponent as RemoveIcon } from '../assets/RemoveIcon.svg'
 import { ReactComponent as AddSmall } from '../assets/AddSmall.svg'
 import { ReactComponent as RemoveSmall } from '../assets/RemoveSmall.svg'
 import { ReactComponent as TickIcon } from '../assets/TickIcon.svg'
+import { ReactComponent as StopIcon } from '../assets/StopIcon.svg'
 import { ReactComponent as LensIcon } from '../assets/LensIcon.svg'
 import { ReactComponent as NewspaperIcon } from '../assets/NewspaperIcon.svg'
 import { ReactComponent as CalendarIcon } from '../assets/CalendarIcon.svg'
 import { ReactComponent as PortfolioIcon } from '../assets/PortfolioIcon.svg'
 import { ReactComponent as NewsIcon } from '../assets/NewsIcon.svg'
-import { ReactComponent as DarkIcon } from '../assets/DarkIcon.svg'
+import { ReactComponent as StarIcon } from '../assets/StarIcon.svg'
 import { ReactComponent as LogoutIcon } from '../assets/LogoutIcon.svg'
 import { ReactComponent as MarketIcon } from '../assets/MarketIcon.svg'
 import { ReactComponent as CollectionIcon } from '../assets/CollectionIcon.svg'
+import { ReactComponent as FireIcon } from '../assets/FireIcon.svg'
+import { ReactComponent as ActiveIcon } from '../assets/ActiveIcon.svg'
+import { ReactComponent as TrophyIcon } from '../assets/TrophyIcon.svg'
 
 export {
   Plus,
@@ -37,13 +41,17 @@ export {
   AddSmall,
   RemoveSmall,
   TickIcon,
+  StopIcon,
   LensIcon,
   NewspaperIcon,
   CalendarIcon,
   PortfolioIcon,
   NewsIcon,
-  DarkIcon,
+  StarIcon,
   LogoutIcon,
   MarketIcon,
-  CollectionIcon
+  CollectionIcon,
+  FireIcon,
+  ActiveIcon,
+  TrophyIcon
 }

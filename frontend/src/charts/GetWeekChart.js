@@ -1,30 +1,10 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import { ChartBoxTop } from '../styles/boxes/ChartBox'
 import Loader from '../components/Loader'
 
-export default function GetWeekChart({ symbol, options, actualPrice }) {
-    const [loading, setLoading] = useState(true)
-    const [dataSeries, setDataSeries] = useState([])
-    const [timeSeries, setTimeSeries] = useState([])
+export default function GetWeekChart({ options, loading, dataSeries, timeSeries, actualPrice }) {
     const [dataColor, setDataColor] = useState('#EEEEEE')
-    
-    useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=***`)
-        .then(response => {
-            if (response && response.data) {
-                const data = response.data
-                setDataSeries(Object.keys(data).slice(0, 140).reverse().map(timestamp => {
-                    return Math.round(data[timestamp]['close'] * 100)/100
-                }))
-                setTimeSeries(Object.keys(data).slice(0, 140).reverse().map(timestamp => {
-                    return data[timestamp]['date']
-                }))
-                setLoading(false)
-            }
-        })
-    }, [symbol])
 
     useEffect(() => {
         if (dataSeries[0] >= dataSeries[139]) {
@@ -62,7 +42,7 @@ export default function GetWeekChart({ symbol, options, actualPrice }) {
 
     if (loading) {
         return (
-            <ChartBoxTop style={{height: '210px'}}>
+            <ChartBoxTop style={{height: '260px'}}>
                 <Loader />
             </ChartBoxTop>
         )
@@ -72,10 +52,12 @@ export default function GetWeekChart({ symbol, options, actualPrice }) {
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${Math.round(actualPrice * 100) / 100}</h4>
                 {dataSeries[0]>dataSeries[139] ?
-                <h4 style={{margin: '10px 20px 25px', color: dataColor}}>-{Math.round((1-dataSeries[139]/dataSeries[0])*10000)/100}%</h4> :
-                <h4 style={{margin: '10px 20px 25px', color: dataColor}}>+{Math.round((1-dataSeries[139]/dataSeries[0])*(-10000))/100}%</h4>}
+                <h4 style={{margin: '10px 20px 25px 0', color: dataColor}}>-{Math.round((1-dataSeries[139]/dataSeries[0])*10000)/100}%</h4> :
+                <h4 style={{margin: '10px 20px 25px 0', color: dataColor}}>+{Math.round((1-dataSeries[139]/dataSeries[0])*(-10000))/100}%</h4>}
             </div>
-            <Line useRefs="chart" data={data} options={options} />
+            <div style={{height: '184px'}}>
+                <Line useRefs="chart" data={data} options={options} />
+            </div>
         </ChartBoxTop>
     )
 }
