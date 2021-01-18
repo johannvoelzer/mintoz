@@ -34,5 +34,9 @@ export default function PriceTarget({quote}) {
             </RangeBox>
         )
     }
-    return <Loader />
+    return (
+        <RangeBox style={{height: '164px'}}>
+            <Loader />
+        </RangeBox>
+    )
 }

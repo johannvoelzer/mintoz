@@ -2,10 +2,10 @@ import styled from 'styled-components/macro'
 
 export const MarketBox = styled.div`
     margin: 30px 0;
-    padding: 20px 0 2px;
+    padding: 20px 0 0;
     width: 100%;
     @media (min-height: 720px) {
-        margin-bottom: 60px;
+        margin: 60px 0;
     };
     box-shadow:
         var(--lightshadow-darkblue),

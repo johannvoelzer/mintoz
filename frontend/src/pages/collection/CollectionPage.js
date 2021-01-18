@@ -18,7 +18,7 @@ const CollectionPage = () => {
             <CollectionGroups />
             <Navigation />
         </div>
-    );
-};
+    )
+}
 
 export default CollectionPage

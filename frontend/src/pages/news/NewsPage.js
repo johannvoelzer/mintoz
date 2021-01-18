@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import * as ROUTES from '../../constants/Routes'
 import { AuthContext } from '../../components/Authentication'
-import NewsList from '../../components/NewsList'
+import PortfolioNews from '../../components/PortfolioNews'
 import Header from '../../components/Header'
 
 const NewsPage = () => {
@@ -15,7 +15,7 @@ const NewsPage = () => {
     return (
         <div style={{marginBottom: '100px'}}>
             <Header title={title} />
-            <NewsList />
+            <PortfolioNews />
             <Navigation />
         </div>
     );

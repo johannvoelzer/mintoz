@@ -12,7 +12,7 @@ const DescriptionBox = styled.div`
     box-shadow:
         var(--lightshadow-darkblue),
         var(--darkshadow-darkblue);
-    @media (max-width: 1379px) {
+    @media (max-width: 1839px) {
         display: none;
     }
 `

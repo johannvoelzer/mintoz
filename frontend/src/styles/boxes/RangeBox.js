@@ -17,7 +17,6 @@ export const PriceBullet = styled.div`
     border-radius: 7px;
     background-color: var(--yellow-main);
     box-shadow:
-        var(--lightshadow-darkblue),
         var(--darkshadow-button);
 `
 
@@ -34,10 +33,12 @@ export const Ma50Bullet = styled.div`
 export const Ma50Line = styled.div`
     margin: -15px 0 0 -22px;
     height: 40px;
+    width: 46px;
     background-image: linear-gradient(var(--green-50), var(--green-50));
     background-size: 2px 40px;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 2;
 `
 
 export const Ma50Tag = styled.p`
@@ -68,10 +69,12 @@ export const Ma200Bullet = styled.div`
 export const Ma200Line = styled.div`
     margin: -40px 0 10px -26px;
     height: 75px;
+    width: 54px;
     background-image: linear-gradient(var(--red-50), var(--red-50));
     background-size: 2px 75px;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 1;
 `
 
 export const Ma200Tag = styled.p`

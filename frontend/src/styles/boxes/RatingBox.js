@@ -21,6 +21,7 @@ export const RatingField = styled.div`
 `
 
 export const RatingBar = styled.div`
+    padding-left: 8px;
     height: 22px;
     border-radius: 11px 0 0 11px;
 `

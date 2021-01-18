@@ -9,7 +9,7 @@ export default function StockRating({symbol}) {
     const [ratingNumber, setRatingNumber] = useState()
 
     useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/rating/${symbol}?apikey=***`)  
+        axios.get(`https://financialmodelingprep.com/api/v3/rating/${symbol}?apikey=...`)  
         .then(response => {
             if (response && response.data && response.data.length !== 0) {
                 setRating(response.data[0])
@@ -43,7 +43,7 @@ export default function StockRating({symbol}) {
             </Details>
             <RatingField>
                 <RatingBar style={{background: dataColor, opacity: '80%', width: ratingNumber/5*100 + '%'}}>
-                    <h5 style={{margin: '4px 0 0 8px', color: 'white'}}>{ratingNumber}</h5>
+                    <h4>{ratingNumber}</h4>
                 </RatingBar>
             </RatingField>
         </RatingBox>

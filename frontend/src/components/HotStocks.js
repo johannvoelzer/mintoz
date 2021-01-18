@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import firebaseConfig from '../firebaseConfig.js'
+import MostActive from './MostActive'
 import { NavLink } from 'react-router-dom'
 import ListBox from '../styles/boxes/ListBox'
 import AddBookmark from './AddBookmark'
-import { ForwardIcon } from './Icons'
+import { ForwardIcon, FireIcon } from './Icons'
 import Loader from './Loader'
 
 export default function HotStocks() {
@@ -31,7 +32,9 @@ export default function HotStocks() {
                 <NavLink to={"/details/"+result.symbol} style={{width: '400px', textDecoration: 'none'}}>
                     <div style={{margin: '12px 0 0'}}>
                         <h5>{result.symbol}</h5>
-                        <h4>{result.name.length >= 26 ? result.name.substr(0, 23) + "\u2026" : result.name}</h4>
+                        <h4>{window.innerWidth < 460 ?
+                            (result.name.length >= 26 ? result.name.substr(0, 23) + "\u2026" : result.name) :
+                            (result.name.length >= 36 ? result.name.substr(0, 33) + "\u2026" : result.name)}</h4>
                     </div>
                 </NavLink>
                 <NavLink to={"/details/"+result.symbol} style={{padding: '22px 16px 0 0'}}>
@@ -45,8 +48,9 @@ export default function HotStocks() {
         if (hotlistOverview) {
             return (
                 <div>
-                    <h6>HOT STOCKS</h6>
+                    <h6><FireIcon /> HOT STOCKS</h6>
                     {hotlistOverview}
+                    <MostActive />
                 </div>
             )
         } else {

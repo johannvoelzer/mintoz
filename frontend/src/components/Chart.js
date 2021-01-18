@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import GetDayChart from '../charts/GetDayChart'
 import GetWeekChart from '../charts/GetWeekChart'
 import GetMonthChart from '../charts/GetMonthChart'
@@ -8,6 +9,81 @@ import ChartBox, { ChartTabs, ChartTab, ChartContent } from '../styles/boxes/Cha
 
 export default function Chart({ symbol, price, change }) {
     const [active, setActive] = useState(0)
+    const [loadingDay, setLoadingDay] = useState(true)
+    const [dataSeriesDay, setDataSeriesDay] = useState([])
+    const [timeSeriesDay, setTimeSeriesDay] = useState([])
+    const [loadingWeek, setLoadingWeek] = useState(true)
+    const [dataSeriesWeek, setDataSeriesWeek] = useState([])
+    const [timeSeriesWeek, setTimeSeriesWeek] = useState([])
+    const [loadingMonth, setLoadingMonth] = useState(true)
+    const [dataSeriesMonth, setDataSeriesMonth] = useState([])
+    const [timeSeriesMonth, setTimeSeriesMonth] = useState([])
+    const [loadingFull, setLoadingFull] = useState(true)
+    const [dataSeriesYear, setDataSeriesYear] = useState([])
+    const [timeSeriesYear, setTimeSeriesYear] = useState([])
+    const [dataSeriesMax, setDataSeriesMax] = useState([])
+    const [timeSeriesMax, setTimeSeriesMax] = useState([])
+    
+    useEffect(() => {
+        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/5min/${symbol}?apikey=...`)
+        .then(response => {
+            if (response && response.data) {
+                const data = response.data
+                setDataSeriesDay(Object.keys(data).slice(0, 80).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['close'] * 100)/100
+                }))
+                setTimeSeriesDay(Object.keys(data).slice(0, 80).reverse().map(timestamp => {
+                    return data[timestamp]['date']
+                }))
+                setLoadingDay(false)
+            }
+        })
+        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/15min/${symbol}?apikey=...`)
+        .then(response => {
+            if (response && response.data) {
+                const data = response.data
+                setDataSeriesWeek(Object.keys(data).slice(0, 140).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['close'] * 100)/100
+                }))
+                setTimeSeriesWeek(Object.keys(data).slice(0, 140).reverse().map(timestamp => {
+                    return data[timestamp]['date']
+                }))
+                setLoadingWeek(false)
+            }
+        })
+        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/1hour/${symbol}?apikey=...`)
+        .then(response => {
+            if (response && response.data) {
+                const data = response.data
+                setDataSeriesMonth(Object.keys(data).slice(0, 140).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['close'] * 100)/100
+                }))
+                setTimeSeriesMonth(Object.keys(data).slice(0, 140).reverse().map(timestamp => {
+                    return data[timestamp]['date']
+                }))
+                setLoadingMonth(false)
+            }
+        })
+        axios.get(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?serietype=line&apikey=...`) 
+        .then(response => {
+            if (response && response.data  && response.data.historical) {
+                const data = response.data.historical
+                setDataSeriesYear(Object.keys(data).slice(0, 253).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['close'] * 100)/100
+                }))
+                setDataSeriesMax(Object.keys(data).reverse().map(timestamp => {
+                    return Math.round(data[timestamp]['close'] * 100)/100
+                }))
+                setTimeSeriesYear(Object.keys(data).slice(0, 253).reverse().map(timestamp => {
+                    return data[timestamp]['date']
+                }))
+                setTimeSeriesMax(Object.keys(data).reverse().map(timestamp => {
+                    return data[timestamp]['date']
+                }))
+                setLoadingFull(false)
+            }
+        })
+    }, [symbol])
 
     const options = {
         tooltips: {
@@ -61,19 +137,19 @@ export default function Chart({ symbol, price, change }) {
     return (
         <ChartBox>
             <ChartContent active={active === 0}>
-                <GetDayChart symbol={symbol} options={options} actualPrice={actualPrice} actualChange={actualChange} />
+                <GetDayChart options={options} loading={loadingDay} dataSeries={dataSeriesDay} timeSeries={timeSeriesDay} actualPrice={actualPrice} actualChange={actualChange} />
             </ChartContent>
             <ChartContent active={active === 1}>
-                <GetWeekChart symbol={symbol} options={options} actualPrice={actualPrice} />
+                <GetWeekChart options={options} loading={loadingWeek} dataSeries={dataSeriesWeek} timeSeries={timeSeriesWeek} actualPrice={actualPrice} />
             </ChartContent>
             <ChartContent active={active === 2}>
-                <GetMonthChart symbol={symbol} options={options} actualPrice={actualPrice} />
+                <GetMonthChart options={options} loading={loadingMonth} dataSeries={dataSeriesMonth} timeSeries={timeSeriesMonth} actualPrice={actualPrice} />
             </ChartContent>
             <ChartContent active={active === 3}>
-                <GetYearChart symbol={symbol} options={options} actualPrice={actualPrice} />
+                <GetYearChart options={options} loading={loadingFull} dataSeries={dataSeriesYear} timeSeries={timeSeriesYear} actualPrice={actualPrice} />
             </ChartContent>
             <ChartContent active={active === 4}>
-                <GetMaxChart symbol={symbol} options={options} actualPrice={actualPrice} />
+                <GetMaxChart options={options} loading={loadingFull} dataSeries={dataSeriesMax} timeSeries={timeSeriesMax} actualPrice={actualPrice} />
             </ChartContent>
             <ChartTabs>
                 <ChartTab onClick={handleClick} active={active === 0} id={0}>

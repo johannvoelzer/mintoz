@@ -1,30 +1,10 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2'
 import { ChartBoxTop } from '../styles/boxes/ChartBox'
 import Loader from '../components/Loader'
 
-export default function GetWeekChart({ symbol, options, actualPrice, actualChange }) {
-    const [loading, setLoading] = useState(true)
-    const [dataSeries, setDataSeries] = useState([])
-    const [timeSeries, setTimeSeries] = useState([])
+export default function GetWeekChart({ options, loading, dataSeries, timeSeries, actualPrice, actualChange }) {
     const [dataColor, setDataColor] = useState('#EEEEEE')
-    
-    useEffect(() => {
-        axios.get(`https://financialmodelingprep.com/api/v3/historical-chart/5min/${symbol}?apikey=***`)
-        .then(response => {
-            if (response && response.data) {
-                const data = response.data
-                setDataSeries(Object.keys(data).slice(0, 80).reverse().map(timestamp => {
-                    return Math.round(data[timestamp]['close'] * 100)/100
-                }))
-                setTimeSeries(Object.keys(data).slice(0, 80).reverse().map(timestamp => {
-                    return data[timestamp]['date']
-                }))
-                setLoading(false)
-            }
-        })
-    }, [symbol])
 
     useEffect(() => {
         if (actualChange < 0) {
@@ -62,7 +42,7 @@ export default function GetWeekChart({ symbol, options, actualPrice, actualChang
 
     if (loading) {
         return (
-            <ChartBoxTop style={{height: '210px'}}>
+            <ChartBoxTop style={{height: '260px'}}>
                 <Loader />
             </ChartBoxTop>
         )
@@ -72,10 +52,12 @@ export default function GetWeekChart({ symbol, options, actualPrice, actualChang
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h4 style={{margin: '10px 20px 25px', color: 'var(--darkgrey-main)'}}>${Math.round(actualPrice * 100) / 100}</h4>
                 {actualChange >= 0 ?
-                <h4 style={{margin: '10px 20px 25px', color: 'var(--green-main)'}}>+{actualChange}%</h4> :
-                <h4 style={{margin: '10px 20px 25px', color: 'var(--red-main)'}}>{actualChange}%</h4>}
+                <h4 style={{margin: '10px 20px 25px 0', color: 'var(--green-main)'}}>+{actualChange}%</h4> :
+                <h4 style={{margin: '10px 20px 25px 0', color: 'var(--red-main)'}}>{actualChange}%</h4>}
             </div>
-            <Line useRefs="chart" data={data} options={options} />
+            <div style={{height: '184px'}}>
+                <Line useRefs="chart" data={data} options={options} />
+            </div>
         </ChartBoxTop>
     )
 }

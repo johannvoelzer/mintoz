@@ -4,13 +4,17 @@ export const CollectionTab = styled.h4`
     margin-bottom: 40px;
     padding: 0 20px;
     cursor: pointer;
+    height: 40px;
     color: ${props => (props.active ? 'var(--yellow-main)' : 'var(--white-75)')};
     margin-top: ${props => (props.active ? '0' : '6px')};
     font-size: ${props => (props.active ? '22px' : '16px')};
     opacity: ${props => (props.active ? '100%' : '40%')};
-    :hover {opacity: 100%;};
+    :hover {opacity: 100%};
     transition:
-        opacity 0.2s ease-in-out,
+      opacity 0.2s ease-in-out,
+      font-size 0.2s ease-in-out,
+      margin-top 0.2s ease-in-out,
+      color 0.2s ease-in-out;
 `
 
 export const CollectionContent = styled.div`

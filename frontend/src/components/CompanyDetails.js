@@ -13,22 +13,22 @@ export default function CompanyDetails({profile}) {
             <InformationBox>
                 <Details>
                     <div>
-                        {profile.country ? <h4>{profile.country}</h4> : <h4>–</h4>}
+                        {profile.country ? <h4>{profile.country}</h4> : <h4 style={{color: 'var(--darkgrey-main)'}}>–</h4>}
                         <h5>COUNTRY</h5>
                     </div>
                     <div style={{width: '100px'}}>
-                        {profile.exchangeShortName ? <h4>{profile.exchangeShortName}</h4> : <h4>–</h4>}
+                        {profile.exchangeShortName ? <h4>{profile.exchangeShortName}</h4> : <h4 style={{color: 'var(--darkgrey-main)'}}>–</h4>}
                         <h5>EXCHANGE</h5>
                     </div>
                 </Details>
                 <br />
                 <Details>
                     <div>
-                        {profile.sector ? <h4>{profile.sector}</h4> : <h4>–</h4>}
+                        {profile.sector ? <h4>{profile.sector}</h4> : <h4 style={{color: 'var(--darkgrey-main)'}}>–</h4>}
                         <h5>SECTOR</h5>
                     </div>
                     <div style={{width: '100px'}}>
-                        {profile.fullTimeEmployees ? <h4>{profile.fullTimeEmployees}</h4> : <h4>–</h4>}
+                        {profile.fullTimeEmployees ? <h4>{profile.fullTimeEmployees}</h4> : <h4 style={{color: 'var(--darkgrey-main)'}}>–</h4>}
                         <h5>EMPLOYEES</h5>
                     </div>
                 </Details>

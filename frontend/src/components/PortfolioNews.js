@@ -13,7 +13,7 @@ import NewsLines from '../styles/text/NewsLines'
 import AddButton from '../styles/buttons/AddButton'
 import Loader from './Loader'
 
-export default function NewsList() {
+export default function PortfolioNews() {
     const { currentUser } = useContext(AuthContext)
     const [news, setNews] = useState([])
     const [loading, setLoading] = useState(false)
@@ -28,10 +28,10 @@ export default function NewsList() {
                     uid: key,
                 }))
                 const watchlist = stockList.map(result => (result.symbol + ","))
-                axios.get(`https://financialmodelingprep.com/api/v3/stock_news?tickers=${watchlist}&apikey=***`)     
+                axios.get(`https://financialmodelingprep.com/api/v3/stock_news?tickers=${watchlist}&apikey=...`)     
                 .then(response => {
                     if (response && response.data) {
-                        setNews(response.data.slice(0,36))
+                        setNews(response.data.slice(0,72))
                     }
                 })
                 .then(setLoading(true))
